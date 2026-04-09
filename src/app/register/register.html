@@ -71,19 +71,8 @@
       </mat-error>
     </mat-form-field>
 
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Que recherchez-vous ?</mat-label>
-      <mat-select formControlName="recherche">
-        <mat-option *ngFor="let option of searchOptions" [value]="option">
-          {{ option }}
-        </mat-option>
-      </mat-select>
-      <mat-error *ngIf="form.get('recherche')?.hasError('required')">Veuillez faire un choix</mat-error>
-    </mat-form-field>
- 
-
     <div class="actions">
-      <button mat-raised-button type="submit" class="btn-suivant" [disabled]="form.invalid">
+      <button mat-raised-button type="ngSubmit" class="btn-suivant" [disabled]="form.invalid">
         Suivant
       </button>
       <button mat-stroked-button type="button" class="btn-annuler" (click)="onCancel()">
