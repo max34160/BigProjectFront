@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
+import { MatInputModule , MatFormField } from '@angular/material/input';
+import { MatFabButton, MatButton } from "@angular/material/button";
 
 /** @title Input with a custom ErrorStateMatcher */
 @Component({
   selector: 'login',
   templateUrl: './login.html',
   styleUrl: './login.scss',
-  imports: [FormsModule, MatInputModule, ReactiveFormsModule],
+  imports: [FormsModule, MatInputModule, ReactiveFormsModule,MatFormField, MatButton],
 })
 
 export class Login {
@@ -17,4 +18,8 @@ export class Login {
   age: number = 0;
   password: string = "";
   email: string = "";
+
+  login(){
+    
+  };
 }

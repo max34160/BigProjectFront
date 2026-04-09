@@ -1,35 +1,31 @@
-
-      
 <form class="login-form">
   <mat-form-field class="login-full-width">
     <mat-label>Nom</mat-label>
     <input type = "text" matInput placeholder="Nom" [(ngModel)]="nom" name="nom" required>
  </mat-form-field>
-</form>
-      
-<form class="login-form">
+
   <mat-form-field class="login-full-width">
     <mat-label>Prénom</mat-label>
     <input type = "text" matInput placeholder="prenom" [(ngModel)]="prenom" name="prenom" required>
   </mat-form-field>
-</form>
-<form class="login-form">
+
   <mat-form-field class="login-full-width">
     <mat-label>Âge</mat-label>
     <input type = "number" matInput min="1" max="120" placeholder="Âge" [(ngModel)]="age" name="age" required>
       </mat-form-field>
-</form>
-<form class="login-form">
+
   <mat-form-field class="login-full-width">
     <mat-label>Email</mat-label>
-    <input type="email" matInput placeholder="Ex. pat@example.com">
+    <input type="email" matInput placeholder="Ex. pat@example.com" [(ngModel)]="email" name="email" required>
  </mat-form-field>
-</form>
-<form class="login-form">
+
   <mat-form-field class="login-full-width">
     <mat-label>Mot de passe</mat-label>
     <input type="password" matInput placeholder="Mot de passe" [(ngModel)]="password" name="password" required>
   </mat-form-field>
+
+
+<button matButton="elevated" (click)="login()">Connexion</button>
 </form>
 
      
