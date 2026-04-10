@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0276949736f9a9adc601b0dffd668883ac98d965
 // Include theming for Angular Material with `mat.theme()`.
 // This Sass mixin will define CSS variables that are used for styling Angular Material
 // components according to the Material 3 design spec.
@@ -8,6 +11,7 @@
 
 html {
   height: 100%;
+<<<<<<< HEAD
   @include mat.theme((
     color: (
       primary: mat.$azure-palette,
@@ -16,6 +20,18 @@ html {
     typography: Roboto,
     density: 0,
   ));
+=======
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$azure-palette,
+        tertiary: mat.$blue-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    )
+  );
+>>>>>>> 0276949736f9a9adc601b0dffd668883ac98d965
 }
 
 body {

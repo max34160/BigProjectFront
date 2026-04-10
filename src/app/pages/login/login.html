@@ -1,0 +1,36 @@
+<form class="login-form" [formGroup]="form" (ngSubmit)="submitForm()">
+
+  <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email" placeholder="johnnyhallydayforever@hotmail.com" />
+      <mat-error *ngIf="form.get('email')?.hasError('required')">L'email est requis</mat-error>
+      <mat-error *ngIf="form.get('email')?.hasError('email')">Format d'email invalide</mat-error>
+    </mat-form-field>
+
+ 
+  <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Mot de passe</mat-label>
+      <input
+        matInput
+        [type]="hidePassword ? 'password' : 'text'"
+        formControlName="motDePasse"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        type="button"
+        (click)="hidePassword = !hidePassword"
+        [attr.aria-label]="'Toggle password visibility'"
+      >
+        <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+      <mat-error *ngIf="form.get('motDePasse')?.hasError('required')">Le mot de passe est requis</mat-error>
+      <mat-error *ngIf="form.get('motDePasse')?.hasError('minlength')">
+        Minimum 8 caractères
+      </mat-error>
+    </mat-form-field>
+
+  <button mat-raised-button type="ngSubmit" class="btn-suivant" [disabled]="form.invalid">
+    Connexion
+  </button>
+</form>
