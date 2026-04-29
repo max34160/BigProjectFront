@@ -5,8 +5,8 @@ const apiRoot = "http://localhost:5500/api";
 
 export async function login(email: string, password: string) {
 
-    const reponse = await fetch(apiRoot + "session", {
-        method: "GET",
+    const reponse = await fetch(apiRoot + "/session", {
+        method: "POST",
         headers: {
             'Content-Type': "application/json"
         },

@@ -1,0 +1,9 @@
+<div class="card-container">
+  <mat-card 
+    class="image-card" 
+    *ngFor="let item of images"
+    [routerLink]="item.link"
+  >
+    <img mat-card-image [src]="item.src" [alt]="item.alt" />
+  </mat-card>
+</div>
