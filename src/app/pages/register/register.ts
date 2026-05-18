@@ -27,14 +27,6 @@ export class AccountCreationComponent {
   form: FormGroup;
   hidePassword = true;
  
-  searchOptions = [
-    'Des informations sur la santé mentale',
-    'Un soutien psychologique',
-    'Des ressources pour proches aidants',
-    'De l\'aide pour une addiction',
-    'Des conseils sur le bien-être',
-  ];
- 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
       nom: ['', [Validators.required]],

@@ -20,7 +20,7 @@ export async function login(email: string, password: string) {
 }
 
 export async function register(form: FormGroup): Promise<void> {
-  const reponse = await fetch(`${apiRoot}/user/`, {
+  const reponse = await fetch(apiRoot + "/user", {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
