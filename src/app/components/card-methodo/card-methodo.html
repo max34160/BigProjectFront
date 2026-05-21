@@ -2,8 +2,8 @@
   <mat-card 
     class="image-card" 
     *ngFor="let item of images"
-    [routerLink]="item.link"
+    [routerLink]="['/login']"
   >
-    <img mat-card-image [src]="item.src" [alt]="item.alt" />
+    <img mat-card-image [src]="item.img_presentation" [alt]="item.img_presentation" />
   </mat-card>
 </div>

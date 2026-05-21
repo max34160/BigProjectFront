@@ -5,8 +5,13 @@
 
 <nav mat-tab-nav-bar [tabPanel]="tabPanel">
   <a mat-tab-link routerLink="/acceuil"><mat-icon class="example-tab-icon">home</mat-icon></a>
-  <a mat-tab-link routerLink=""><mat-icon class="example-tab-icon">map</mat-icon></a>
-  <a mat-tab-link routerLink="/login"><mat-icon class="example-tab-icon">face</mat-icon></a>
+  <!-- <a mat-tab-link routerLink=""><mat-icon class="example-tab-icon">map</mat-icon></a> -->
+  @if (isVisible == false) {
+    <a mat-tab-link routerLink="/login"><mat-icon class="example-tab-icon">face</mat-icon></a>
+  } @else {
+    <a mat-tab-link routerLink="/login"><mat-icon class="example-tab-icon">face</mat-icon></a>
+  }
+ 
 
 </nav>
 <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>

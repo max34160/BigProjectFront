@@ -20,3 +20,45 @@ export async function login(email: string, password: string) {
     return data ;
 
 }
+
+export async function getAllMethodologie() {
+
+    const reponse = await fetch(apiRoot + "/methodologie/all/", {
+        method: "GET",
+        headers: {
+            'Content-Type': "application/json"
+        }
+    });
+    const data = await reponse.json();
+
+    return data ;
+
+}
+
+export async function getOne(methodoId : string) {
+
+    const reponse = await fetch(apiRoot + "/methodologie/id:"+methodoId, {
+        method: "GET",
+        headers: {
+            'Content-Type': "application/json"
+        }
+    });
+    const data = await reponse.json();
+
+    return data ;
+
+}
+
+export async function authByToken() {
+
+    const reponse = await fetch(apiRoot + "/session/", {
+        method: "GET",
+        headers: {
+            'Content-Type': "application/json"
+        }
+    });
+    const data = await reponse.json();
+
+    return data ;
+
+}

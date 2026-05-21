@@ -1,7 +1,8 @@
 import { NgFor, NgForOf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component , OnInit} from '@angular/core';
 import { MatCardModule, MatCardImage, MatCard } from '@angular/material/card';
 import { RouterModule, RouterLink } from '@angular/router';
+import * as API from "../../lib/api";
 
 @Component({
   selector: 'app-card-methodo',
@@ -9,10 +10,18 @@ import { RouterModule, RouterLink } from '@angular/router';
   templateUrl: './card-methodo.html',
   styleUrl: './card-methodo.scss',
 })
-export class CardMethodo {
-  images = [
-    { src: '', alt: 'image 1', link: '' },
-    { src: '', alt: 'image 2', link: '' },
-    { src: '', alt: 'image 3', link: '' }
-  ];
+
+export class CardMethodo implements OnInit {
+
+  images: any[] = [];
+
+  constructor() {}
+
+  async ngOnInit() {
+    await this.loadMethodologies();
+  }
+
+  async loadMethodologies() {
+    this.images = await API.getAllMethodologie();
+  }
 }
