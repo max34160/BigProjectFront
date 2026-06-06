@@ -17,25 +17,27 @@ export async function login(email: string, password: string) {
     });
     const data = await reponse.json();
 
-  return data;
+    return data;
 }
 
-export async function register(form: FormGroup): Promise<void> {
-  const reponse = await fetch(`${apiRoot}/user/`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      nom: form.value.nom,
-      prenom: form.value.prenom,
-      age: form.value.age,
-      email: form.value.email,
-      motDePasse: form.value.motDePasse
-    })
-  });
-  const data = await reponse.json();
-  console.log('Utilisateur enregistré:', data);
+export async function register(nom: string, prenom: string , age : string , email: string, password: string) {
+    const reponse = await fetch(`${apiRoot}/user/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            nom: nom,
+            prenom: prenom,
+            age: age,
+            email: email,
+            password: password
+        })
+    });
+    const data = await reponse.json();
+    console.log('Utilisateur enregistré:', data);
+    return data;
+    
 }
 
 export async function getAllMethodologie() {
@@ -49,13 +51,13 @@ export async function getAllMethodologie() {
     });
     const data = await reponse.json();
 
-    return data ;
+    return data;
 
 }
 
-export async function getOne(methodoId : string) {
+export async function getOne(methodoId: string) {
 
-    const reponse = await fetch(apiRoot + "/methodologie/"+methodoId, {
+    const reponse = await fetch(apiRoot + "/methodologie/" + methodoId, {
         method: "GET",
         credentials: "include",
         headers: {
@@ -64,7 +66,7 @@ export async function getOne(methodoId : string) {
     });
     const data = await reponse.json();
 
-    return data ;
+    return data;
 
 }
 
@@ -79,13 +81,13 @@ export async function authByToken() {
     });
     const data = await reponse.json();
 
-    return data ;
+    return data;
 
 }
 
-export async function isPro(id_user : number) {
+export async function isPro(id_user: number) {
 
-    const reponse = await fetch(apiRoot + "/pro/"+String(id_user), {
+    const reponse = await fetch(apiRoot + "/pro/" + String(id_user), {
         method: "GET",
         credentials: "include",
         headers: {
@@ -94,6 +96,6 @@ export async function isPro(id_user : number) {
     });
     const data = await reponse.json();
 
-    return data ;
+    return data;
 
 }

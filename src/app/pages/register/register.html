@@ -1,24 +1,8 @@
 <div class="page-wrapper">
-  <!-- Stepper header -->
-  <div class="stepper-header">
-    <div class="step active">
-      <div class="step-dot active"></div>
-      <span class="step-label">Informations du compte</span>
-    </div>
-    <div class="step-line"></div>
-    <div class="step">
-      <div class="step-dot"></div>
-      <span class="step-label">Préférences</span>
-    </div>
-    <div class="step-line"></div>
-    <div class="step">
-      <div class="step-dot"></div>
-      <span class="step-label">Validation par code</span>
-    </div>
-  </div>
+  
   <h1 class="page-title">Création de compte</h1>
  
-  <form [formGroup]="form" (ngSubmit)="register()" class="creation-form" novalidate>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="creation-form" novalidate>
  
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Nom</mat-label>
@@ -54,7 +38,7 @@
       <input
         matInput
         [type]="hidePassword ? 'password' : 'text'"
-        formControlName="motDePasse"
+        formControlName="password"
       />
       <button
         mat-icon-button
@@ -65,18 +49,15 @@
       >
         <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
       </button>
-      <mat-error *ngIf="form.get('motDePasse')?.hasError('required')">Le mot de passe est requis</mat-error>
-      <mat-error *ngIf="form.get('motDePasse')?.hasError('minlength')">
+      <mat-error *ngIf="form.get('password')?.hasError('required')">Le mot de passe est requis</mat-error>
+      <mat-error *ngIf="form.get('password')?.hasError('minlength')">
         Minimum 8 caractères
       </mat-error>
     </mat-form-field>
 
     <div class="actions">
       <button mat-raised-button type="ngSubmit" class="btn-suivant" [disabled]="form.invalid">
-        Suivant
-      </button>
-      <button mat-stroked-button type="button" class="btn-annuler" (click)="onCancel()">
-        Annuler
+        Confirmer
       </button>
     </div>
  
