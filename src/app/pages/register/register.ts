@@ -37,31 +37,37 @@ export class AccountCreationComponent {
     });
   }
  
-  async onSubmit(): Promise<void> {
-    if (this.form.valid) {
-      console.log('Form submitted:', this.form.value.email);
-    }
-  }
   onCancel(): void {
     this.form.reset();
   }
-  async register(): Promise<void> {
-    const reponse = await fetch('/api/user/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        nom: this.form.value.nom,
-        prenom: this.form.value.prenom,
-        age: this.form.value.age,
-        email: this.form.value.email,
-        motDePasse: this.form.value.motDePasse
-      })
-    });
-    const data = await reponse.json();
-    console.log('Utilisateur enregistré:',data);
 
+  async register(): Promise<void> {
+    if (this.form.invalid) return;
+
+    try {
+      const reponse = await fetch('/api/user/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nom: this.form.value.nom,
+          prenom: this.form.value.prenom,
+          age: this.form.value.age,
+          email: this.form.value.email,
+          motDePasse: this.form.value.motDePasse
+        })
+      });
+
+      if (!reponse.ok) {
+        const err = await reponse.json();
+        console.error('Erreur création:', err);
+        return;
+      }
+
+      const data = await reponse.json();
+      console.log('Utilisateur enregistré:', data);
+    } catch (e) {
+      console.error('Erreur réseau:', e);
+    }
   }
 }
   

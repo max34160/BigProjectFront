@@ -2,6 +2,7 @@ import { Component, signal } from '@angular/core';
 import { RouterOutlet, RouterLinkWithHref, RouterLink } from '@angular/router';
 import {MatTabsModule, MatTabLink } from '@angular/material/tabs';
 import { MatIcon } from "@angular/material/icon";
+import{HTTP_client} from "@angular/common/http"; 
 
 @Component({
   selector: 'app-root',
