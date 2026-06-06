@@ -12,3 +12,4 @@ export const routes: Routes = [
     { path: ":methodo", component: FicheTech },
     { path: ":update", component: Update }
 ];
+

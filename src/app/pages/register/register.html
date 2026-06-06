@@ -1,0 +1,85 @@
+<div class="page-wrapper">
+  <!-- Stepper header -->
+  <div class="stepper-header">
+    <div class="step active">
+      <div class="step-dot active"></div>
+      <span class="step-label">Informations du compte</span>
+    </div>
+    <div class="step-line"></div>
+    <div class="step">
+      <div class="step-dot"></div>
+      <span class="step-label">Préférences</span>
+    </div>
+    <div class="step-line"></div>
+    <div class="step">
+      <div class="step-dot"></div>
+      <span class="step-label">Validation par code</span>
+    </div>
+  </div>
+  <h1 class="page-title">Création de compte</h1>
+ 
+  <form [formGroup]="form" (ngSubmit)="register()" class="creation-form" novalidate>
+ 
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Nom</mat-label>
+      <input matInput formControlName="nom" placeholder="Jean-Michel" />
+      <mat-error *ngIf="form.get('nom')?.hasError('required')">Le nom est requis</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Prénom</mat-label>
+      <input matInput formControlName="prenom" placeholder="LaPatate" />
+      <mat-error *ngIf="form.get('prenom')?.hasError('required')">Le prénom est requis</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Âge</mat-label>
+      <input matInput type="number" formControlName="age" placeholder="18" />
+      <mat-error *ngIf="form.get('age')?.hasError('required')">L'âge est requis</mat-error>
+      <mat-error *ngIf="form.get('age')?.hasError('min') || form.get('age')?.hasError('max')">
+        L'âge doit être entre 1 et 120
+      </mat-error>
+    </mat-form-field>
+ 
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email" placeholder="johnnyhallydayforever@hotmail.com" />
+      <mat-error *ngIf="form.get('email')?.hasError('required')">L'email est requis</mat-error>
+      <mat-error *ngIf="form.get('email')?.hasError('email')">Format d'email invalide</mat-error>
+    </mat-form-field>
+ 
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Mot de passe</mat-label>
+      <input
+        matInput
+        [type]="hidePassword ? 'password' : 'text'"
+        formControlName="motDePasse"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        type="button"
+        (click)="hidePassword = !hidePassword"
+        [attr.aria-label]="'Toggle password visibility'"
+      >
+        <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+      <mat-error *ngIf="form.get('motDePasse')?.hasError('required')">Le mot de passe est requis</mat-error>
+      <mat-error *ngIf="form.get('motDePasse')?.hasError('minlength')">
+        Minimum 8 caractères
+      </mat-error>
+    </mat-form-field>
+
+    <div class="actions">
+      <button mat-raised-button type="ngSubmit" class="btn-suivant" [disabled]="form.invalid">
+        Suivant
+      </button>
+      <button mat-stroked-button type="button" class="btn-annuler" (click)="onCancel()">
+        Annuler
+      </button>
+    </div>
+ 
+  </form>
+</div>
+ 
