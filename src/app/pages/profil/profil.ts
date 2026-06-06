@@ -1,27 +1,16 @@
-import { Component } from '@angular/core';
-import * as API from "../../lib/api";
+import { Component ,OnInit} from '@angular/core';
+import { GlobalService } from '../../services/global';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-profil',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './profil.html',
   styleUrl: './profil.scss',
 })
 export class Profil {
-  images: any[] = [];
   
 
-  
+  constructor(public global: GlobalService) {}
 
-  constructor() {
-  }
-
-  async ngOnInit() {
-    await this.loadMethodologies();
-  }
-
-  async loadMethodologies() {
-    // this.images = await API.getOne(String(this.methodoId));
-    
-  }
 }

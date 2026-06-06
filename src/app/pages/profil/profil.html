@@ -1,1 +1,21 @@
-<p>profil works!</p>
+<div class="profil-container" >
+  <h1 class="profil-title">Profil</h1>
+
+  <p class="profil-firstname">
+    {{global.user.nom}}
+  </p>
+  <button [routerLink]="['/name']"></button>
+
+  <p class="profil-name">
+    {{global.user.premon}}
+  </p>
+
+  <p class="profil-age">
+    {{global.user.age}}
+  </p>
+
+  <p class="profil-email">
+    {{global.user.email}}
+  </p>
+  
+</div>

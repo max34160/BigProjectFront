@@ -23,5 +23,6 @@ export class CardMethodo implements OnInit {
 
   async loadMethodologies() {
     this.images = await API.getAllMethodologie();
+    
   }
 }

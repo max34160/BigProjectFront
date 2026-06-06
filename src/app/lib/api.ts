@@ -7,6 +7,7 @@ export async function login(email: string, password: string) {
 
     const reponse = await fetch(apiRoot + "/session", {
         method: "POST",
+        credentials: "include",
         headers: {
             'Content-Type': "application/json"
         },
@@ -25,6 +26,7 @@ export async function getAllMethodologie() {
 
     const reponse = await fetch(apiRoot + "/methodologie/all/", {
         method: "GET",
+        credentials: "include",
         headers: {
             'Content-Type': "application/json"
         }
@@ -37,8 +39,9 @@ export async function getAllMethodologie() {
 
 export async function getOne(methodoId : string) {
 
-    const reponse = await fetch(apiRoot + "/methodologie/id:"+methodoId, {
+    const reponse = await fetch(apiRoot + "/methodologie/"+methodoId, {
         method: "GET",
+        credentials: "include",
         headers: {
             'Content-Type': "application/json"
         }
@@ -53,6 +56,22 @@ export async function authByToken() {
 
     const reponse = await fetch(apiRoot + "/session/", {
         method: "GET",
+        credentials: "include",
+        headers: {
+            'Content-Type': "application/json"
+        }
+    });
+    const data = await reponse.json();
+
+    return data ;
+
+}
+
+export async function isPro(id_user : number) {
+
+    const reponse = await fetch(apiRoot + "/pro/"+String(id_user), {
+        method: "GET",
+        credentials: "include",
         headers: {
             'Content-Type': "application/json"
         }

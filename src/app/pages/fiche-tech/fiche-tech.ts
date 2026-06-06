@@ -11,28 +11,21 @@ import * as API from "../../lib/api";
   styleUrl: './fiche-tech.scss',
 })
 
-export class FicheTech  implements OnInit {
+export class FicheTech  {
 
-  images: any[] = [];
+  methodo = signal<any>({});
   
 
   private methodoId = signal('');
   private activatedRoute = inject(ActivatedRoute);
 
   constructor() {
-    // Access route parameters
-    this.activatedRoute.params.subscribe((params) => {
-      this.methodoId.set(params['id']);
-      // @TODO trouver la methodo et les pro
-    });
-  }
-
-  async ngOnInit() {
-    await this.loadMethodologies();
-  }
-
-  async loadMethodologies() {
-    this.images = await API.getOne(String(this.methodoId));
     
+    this.activatedRoute.params.subscribe(async (params) => {
+      this.methodoId.set(params['methodo']);
+      const images = await API.getOne(this.methodoId());
+      this.methodo.set(images);
+      
+    });
   }
 }

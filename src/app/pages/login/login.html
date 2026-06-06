@@ -13,7 +13,7 @@
       <input
         matInput
         [type]="hidePassword ? 'password' : 'text'"
-        formControlName="motDePasse"
+        formControlName="password"
       />
       <button
         mat-icon-button
@@ -24,8 +24,8 @@
       >
         <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
       </button>
-      <mat-error *ngIf="form.get('motDePasse')?.hasError('required')">Le mot de passe est requis</mat-error>
-      <mat-error *ngIf="form.get('motDePasse')?.hasError('minlength')">
+      <mat-error *ngIf="form.get('password')?.hasError('required')">Le mot de passe est requis</mat-error>
+      <mat-error *ngIf="form.get('password')?.hasError('minlength')">
         Minimum 8 caractères
       </mat-error>
     </mat-form-field>
