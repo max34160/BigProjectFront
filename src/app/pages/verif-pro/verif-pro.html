@@ -1,10 +1,59 @@
-<mat-form-field appearance="outline" class="full-width">
-    <mat-label>Numéro d'indentification National</mat-label>
-    <input matInput formControlName="idNat" />
-    <button mat-raised-button type="ngSubmit" class="btn-suivant" [disabled]="form.invalid">
-        Confirmer
-    </button>
-    <button mat-button [routerLink]="['/profil']">
-        retourner sur le profil
-    </button>
-</mat-form-field>
+<div class="verif-pro-container">
+  <h1>Vérification professionnelle</h1>
+
+  <!-- Étape 1 : saisie du numéro d'identification -->
+  @if (!medecinInfo) {
+    <form [formGroup]="form" (ngSubmit)="verify()">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Numéro d'identification national</mat-label>
+        <input matInput formControlName="idNat" />
+      </mat-form-field>
+
+      @if (errorMessage) {
+        <p class="error">{{ errorMessage }}</p>
+      }
+
+      <div class="actions">
+        <button mat-raised-button type="submit" [disabled]="form.invalid">
+          Confirmer
+        </button>
+        <button mat-button type="button" [routerLink]="['/profil']">
+          Retourner sur le profil
+        </button>
+      </div>
+    </form>
+  }
+
+  <!-- Étape 2 : infos vérifiées + formulaire cabinet -->
+  @if (medecinInfo) {
+    <div class="medecin-info">
+      <p><strong>Nom :</strong> {{ medecinInfo.nom }}</p>
+      <p><strong>Prénom :</strong> {{ medecinInfo.prenom }}</p>
+      <p><strong>Profession :</strong> {{ medecinInfo.profession }}</p>
+      <p><strong>Spécialité :</strong> {{ medecinInfo.specialite }}</p>
+    </div>
+
+    <form [formGroup]="cabinetForm" (ngSubmit)="register()">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nom du cabinet</mat-label>
+        <input matInput formControlName="nom_cabinet" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Description</mat-label>
+        <input matInput formControlName="description" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Horaires du cabinet</mat-label>
+        <input matInput formControlName="horaire_cabinet" />
+      </mat-form-field>
+
+      <div class="actions">
+        <button mat-raised-button type="submit" [disabled]="cabinetForm.invalid">
+          Créer mon profil professionnel
+        </button>
+      </div>
+    </form>
+  }
+</div>
