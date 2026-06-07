@@ -12,6 +12,10 @@ import { MatButton } from "@angular/material/button";
 export class Profil {
   
 
-  constructor(public global: GlobalService, private router: Router) {}
+  constructor(public global: GlobalService, private router: Router) {
+    if(this.global.isPro){
+      this.router.navigate(['/profil-pro']);
+    }
+  }
   
 }

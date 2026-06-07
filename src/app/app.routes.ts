@@ -6,16 +6,16 @@ import { Profil } from './pages/profil/profil';
 import { Update } from './pages/update/update';
 import { Register } from './pages/register/register';
 import { VerifPro } from './pages/verif-pro/verif-pro';
-import { UpdateProfil } from './pages/update-profil/update-profil';
+import { ProfilPro } from './pages/profil-pro/profil-pro';
 
 export const routes: Routes = [
     { path: "login", component: Login },
     { path: "register", component: Register},
     { path: "acceuil", component: Acceuil },
     { path: "profil", component: Profil },
+    { path: "profil-pro", component: ProfilPro },
     { path: "verif-pro", component: VerifPro },
-    { path: "update-profil/:id", component: UpdateProfil },
     { path: ":methodo", component: FicheTech },
-    { path: "/update/:update", component: Update }
+    { path: "update/:update", component: Update }
 ];
 
