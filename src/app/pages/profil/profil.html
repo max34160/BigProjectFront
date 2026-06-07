@@ -4,7 +4,7 @@
   <p class="profil-firstname">
     {{global.user.nom}}
   </p>
-  <button [routerLink]="['/name']"></button>
+  <button [routerLink]="['/update-profil', global.user?.id_user]">Modifier le profil</button>
 
   <p class="profil-name">
     {{global.user.premon}}

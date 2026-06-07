@@ -36,18 +36,4 @@ export class App {
     }
 
 }
-  // 
-
-  // async submitForm() {
-      
-  //   const result = await  API.authByToken();
-    
-  //   if (result.id_user ){
-  //     this.isVisible = true;
-  //   }else {
-  //     this.isVisible = false;
-  //   }
-      
-  // }
-
 }

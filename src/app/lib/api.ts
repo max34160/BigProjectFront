@@ -85,6 +85,37 @@ export async function authByToken() {
 
 }
 
+export async function getUser(id: string) {
+
+    const reponse = await fetch(apiRoot + "/user/" + id, {
+        method: "GET",
+        credentials: "include",
+        headers: {
+            'Content-Type': "application/json"
+        }
+    });
+    const data = await reponse.json();
+
+    return data;
+
+}
+
+export async function updateUser(id: string, nom: string, prenom: string, age: string, email: string) {
+
+    const reponse = await fetch(apiRoot + "/user/" + id, {
+        method: "PUT",
+        credentials: "include",
+        headers: {
+            'Content-Type': "application/json"
+        },
+        body: JSON.stringify({ nom, prenom, age, email })
+    });
+    const data = await reponse.json();
+
+    return data;
+
+}
+
 export async function isPro(id_user: number) {
 
     const reponse = await fetch(apiRoot + "/pro/" + String(id_user), {
