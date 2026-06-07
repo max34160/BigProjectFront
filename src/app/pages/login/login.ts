@@ -46,4 +46,8 @@ export class Login {
           }
     }
   }
+
+  async linkRegister() {
+    this.router.navigate(['/register']);
+  }
 }

@@ -1,0 +1,10 @@
+<mat-form-field appearance="outline" class="full-width">
+    <mat-label>Numéro d'indentification Nationnal</mat-label>
+    <input matInput formControlName="idNat" />
+    <button mat-raised-button type="ngSubmit" class="btn-suivant" [disabled]="form.invalid">
+        Confirmer
+    </button>
+    <button mat-button [routerLink]="['/profil']">
+        retourner sur le profil
+    </button>
+</mat-form-field>

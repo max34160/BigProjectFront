@@ -5,6 +5,10 @@
     {{global.user.nom}}
   </p>
 
+  <button mat-button [routerLink]="['/update/:nom']">
+    Modifier le nom
+  </button>
+
   <p class="profilpro-name">
     {{global.user.premon}}
   </p>
@@ -19,6 +23,14 @@
 
   <p class="profilpro-nom-cabinet">
     {{global.pro.nom_cabinet}}
+  </p>
+
+<p class="profilpro-adresse">
+    {{global.pro.adresse}}
+  </p>
+
+  <p class="profilpro-ville">
+    {{global.pro.ville}}
   </p>
 
   <p class="profilpro-description">

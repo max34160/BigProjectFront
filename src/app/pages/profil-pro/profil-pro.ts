@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { GlobalService } from '../../services/global';
+import { MatButton } from "@angular/material/button";
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-profil-pro',
-  imports: [],
+  imports: [MatButton, RouterLink],
   templateUrl: './profil-pro.html',
   styleUrl: './profil-pro.scss',
 })

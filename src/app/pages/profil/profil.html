@@ -4,18 +4,36 @@
   <p class="profil-firstname">
     {{global.user.nom}}
   </p>
-  <button [routerLink]="['/name']"></button>
-
+  <button mat-button [routerLink]="['/update/:nom']">
+    Modifier le nom
+  </button>
+  
+  
   <p class="profil-name">
-    {{global.user.premon}}
+    {{global.user.prenom}}
   </p>
+  <button mat-button [routerLink]="['/update/:prenom']">
+    Modifier le prénom
+  </button>
 
   <p class="profil-age">
     {{global.user.age}}
   </p>
+  <button mat-button [routerLink]="['/update/:age']">
+    Modifier l'âge
+  </button>
 
   <p class="profil-email">
     {{global.user.email}}
   </p>
-  
+  <button mat-button [routerLink]="['/update/:email']">
+    Modifier l'email
+  </button>
+
+  <button mat-button [routerLink]="['/update/:password']">
+    Modifier de mot de passe 
+  </button>
+  <button mat-button [routerLink]="['/verif-pro']">
+    Passer Pro 
+  </button>
 </div>
