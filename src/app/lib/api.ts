@@ -131,14 +131,25 @@ export async function updateUser(id: string, nom: string, prenom: string, age: s
 
 export async function verifyPro(identificationNationale: string) {
 
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 8000);
+
     const reponse = await fetch(apiRoot + "/pro/verify", {
         method: "POST",
         credentials: "include",
+        signal: controller.signal,
         headers: {
             'Content-Type': "application/json"
         },
         body: JSON.stringify({ identificationNationale })
     });
+
+    clearTimeout(timeout);
+
+    if (!reponse.ok) {
+        return { error: `Erreur serveur (${reponse.status})` };
+    }
+
     const data = await reponse.json();
 
     return data;

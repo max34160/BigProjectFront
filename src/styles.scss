@@ -12,6 +12,12 @@ html {
   ));
 }
 
+app-root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
 body {
   // Default the application to a light color theme. This can be changed to
   // `dark` to enable the dark color theme, or to `light dark` to defer to the
@@ -30,6 +36,14 @@ body {
   height: 100%;
 }
 /* You can add global styles to this file, and also import other style files */
+
+* {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
 
 .snack-success {
   --mdc-snackbar-container-color: #2e7d32;

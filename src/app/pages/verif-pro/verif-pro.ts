@@ -5,14 +5,13 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { RouterLink, Router } from "@angular/router";
-import { CommonModule } from "@angular/common";
 import { GlobalService } from "../../services/global";
 import * as API from "../../lib/api";
 
 @Component({
   selector: 'app-verif-pro',
   standalone: true,
-  imports: [CommonModule, MatFormFieldModule, MatInputModule, MatButtonModule, ReactiveFormsModule, RouterLink],
+  imports: [MatFormFieldModule, MatInputModule, MatButtonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './verif-pro.html',
   styleUrl: './verif-pro.scss',
 })
@@ -37,12 +36,20 @@ export class VerifPro {
   }
 
   async verify() {
+    if (this.form.invalid) return;
     this.errorMessage = '';
-    const result = await API.verifyPro(this.form.value.idNat);
-    if (result.error) {
-      this.errorMessage = result.error;
-    } else {
-      this.medecinInfo = result;
+    console.log('[verify] idNat envoyé:', this.form.value.idNat);
+    try {
+      const result = await API.verifyPro(this.form.value.idNat);
+      console.log('[verify] résultat API:', result);
+      if (result.error) {
+        this.errorMessage = result.error;
+      } else {
+        this.medecinInfo = result;
+      }
+    } catch (e) {
+      console.error('[verify] erreur:', e);
+      this.errorMessage = 'Impossible de contacter le serveur, veuillez réessayer.';
     }
   }
 

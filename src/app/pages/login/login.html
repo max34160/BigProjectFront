@@ -1,30 +1,46 @@
-<form class="login-form" [formGroup]="form" (ngSubmit)="submitForm()">
+<div class="page-wrapper">
 
-  <mat-form-field appearance="outline" class="full-width">
-    <mat-label>Email</mat-label>
-    <input matInput type="email" formControlName="email" placeholder="johnnyhallydayforever@hotmail.com" />
-    <mat-error *ngIf="form.get('email')?.hasError('required')">L'email est requis</mat-error>
-    <mat-error *ngIf="form.get('email')?.hasError('email')">Format d'email invalide</mat-error>
-  </mat-form-field>
+  <div class="logo-section">
+    <mat-icon class="logo-icon">medical_services</mat-icon>
+  </div>
 
+  <h1 class="page-title">Connexion</h1>
+  <p class="page-subtitle">Bienvenue, connectez-vous à votre compte</p>
 
-  <mat-form-field appearance="outline" class="full-width">
-    <mat-label>Mot de passe</mat-label>
-    <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" />
-    <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword"
-      [attr.aria-label]="'Toggle password visibility'">
-      <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
-    </button>
-    <mat-error *ngIf="form.get('password')?.hasError('required')">Le mot de passe est requis</mat-error>
-    <mat-error *ngIf="form.get('password')?.hasError('minlength')">
-      Minimum 8 caractères
-    </mat-error>
-  </mat-form-field>
+  <form class="login-form" [formGroup]="form" (ngSubmit)="submitForm()">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email" placeholder="johnnyhallydayforever@hotmail.com" />
+      @if (form.get('email')?.hasError('required')) {
+        <mat-error>L'email est requis</mat-error>
+      }
+      @if (form.get('email')?.hasError('email')) {
+        <mat-error>Format d'email invalide</mat-error>
+      }
+    </mat-form-field>
 
-  <button mat-raised-button type="ngSubmit" class="btn-suivant" [disabled]="form.invalid">
-    Connexion
-  </button>
-  <button mat-raised-button type="button" (click)="linkRegister()">
-    Inscrivez-vous
-  </button>
-</form>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Mot de passe</mat-label>
+      <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" />
+      <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword">
+        <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+      @if (form.get('password')?.hasError('required')) {
+        <mat-error>Le mot de passe est requis</mat-error>
+      }
+      @if (form.get('password')?.hasError('minlength')) {
+        <mat-error>Minimum 8 caractères</mat-error>
+      }
+    </mat-form-field>
+
+    <div class="actions">
+      <button mat-flat-button class="btn-connexion" type="submit" [disabled]="form.invalid">
+        Connexion
+      </button>
+      <button mat-stroked-button class="btn-register" type="button" (click)="linkRegister()">
+        Inscrivez-vous
+      </button>
+    </div>
+  </form>
+
+</div>
