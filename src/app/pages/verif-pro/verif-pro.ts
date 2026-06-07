@@ -65,6 +65,10 @@ export class VerifPro {
         this.snackBar.open(result.error, 'Fermer', { duration: 4000 });
         return;
       }
+      if (result.pro){
+        this.global.isPro = true;  
+        this.global.pro = result.pro;
+      }
 
       this.snackBar.open('Votre profil professionnel a bien été créé !', 'OK', {
         duration: 3000,
