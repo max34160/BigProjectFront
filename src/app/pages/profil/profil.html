@@ -2,7 +2,7 @@
   <h1 class="profil-title">Profil</h1>
 
   <p class="profil-firstname">
-    {{global.user.nom}}
+    {{global.user?.nom}}
   </p>
   <button mat-button [routerLink]="['/update/:nom']">
     Modifier le nom
@@ -10,21 +10,21 @@
   
   
   <p class="profil-name">
-    {{global.user.prenom}}
+    {{global.user?.prenom}}
   </p>
   <button mat-button [routerLink]="['/update/:prenom']">
     Modifier le prénom
   </button>
 
   <p class="profil-age">
-    {{global.user.age}}
+    {{global.user?.age}}
   </p>
   <button mat-button [routerLink]="['/update/:age']">
     Modifier l'âge
   </button>
 
   <p class="profil-email">
-    {{global.user.email}}
+    {{global.user?.email}}
   </p>
   <button mat-button [routerLink]="['/update/:email']">
     Modifier l'email

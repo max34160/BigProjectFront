@@ -155,6 +155,11 @@ export async function registerPro(identificationNationale: string, id_user: numb
         },
         body: JSON.stringify({ identificationNationale, id_user, nom_cabinet, description, horaire_cabinet })
     });
+
+    if (!reponse.ok) {
+        return { error: `Erreur serveur (${reponse.status})` };
+    }
+
     const data = await reponse.json();
 
     return data;

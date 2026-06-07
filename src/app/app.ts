@@ -28,6 +28,7 @@ export class App {
       const result = await API.authByToken();
 
       this.global.isLogged = !!result.id_user;
+      if (result.id_user) this.global.user = result;
 
     } catch (e) {
 

@@ -8,12 +8,13 @@ import { Register } from './pages/register/register';
 import { VerifPro } from './pages/verif-pro/verif-pro';
 
 export const routes: Routes = [
+    { path: "", redirectTo: "acceuil", pathMatch: "full" },
     { path: "login", component: Login },
     { path: "register", component: Register},
     { path: "acceuil", component: Acceuil },
     { path: "profil", component: Profil },
     { path: "verif-pro", component: VerifPro },
     { path: ":methodo", component: FicheTech },
-    { path: "/update/:update", component: Update }
+    { path: "update/:update", component: Update }
 ];
 
