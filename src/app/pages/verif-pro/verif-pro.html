@@ -2,30 +2,26 @@
   <h1>Vérification professionnelle</h1>
 
   <!-- Étape 1 : saisie du numéro d'identification -->
-  @if (!medecinInfo) {
-    <form [formGroup]="form" (ngSubmit)="verify()">
-      <mat-form-field appearance="outline" class="full-width">
-        <mat-label>Numéro d'identification national</mat-label>
-        <input matInput formControlName="idNat" />
-      </mat-form-field>
+  <form *ngIf="!medecinInfo" [formGroup]="form" (ngSubmit)="verify()">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Numéro d'identification national</mat-label>
+      <input matInput formControlName="idNat" />
+    </mat-form-field>
 
-      @if (errorMessage) {
-        <p class="error">{{ errorMessage }}</p>
-      }
+    <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
 
-      <div class="actions">
-        <button mat-raised-button type="submit" [disabled]="form.invalid">
-          Confirmer
-        </button>
-        <button mat-button type="button" [routerLink]="['/profil']">
-          Retourner sur le profil
-        </button>
-      </div>
-    </form>
-  }
+    <div class="actions">
+      <button mat-raised-button type="submit" [disabled]="form.invalid">
+        Confirmer
+      </button>
+      <button mat-button type="button" [routerLink]="['/profil']">
+        Retourner sur le profil
+      </button>
+    </div>
+  </form>
 
   <!-- Étape 2 : infos vérifiées + formulaire cabinet -->
-  @if (medecinInfo) {
+  <div *ngIf="medecinInfo">
     <div class="medecin-info">
       <p><strong>Nom :</strong> {{ medecinInfo.nom }}</p>
       <p><strong>Prénom :</strong> {{ medecinInfo.prenom }}</p>
@@ -55,5 +51,5 @@
         </button>
       </div>
     </form>
-  }
+  </div>
 </div>

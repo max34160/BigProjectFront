@@ -1,15 +1,17 @@
 import { Component, inject } from '@angular/core';
-import { MatFormField, MatLabel } from "@angular/material/form-field";
-import { MatInput } from "@angular/material/input";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { MatButtonModule } from "@angular/material/button";
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { RouterLink, Router } from "@angular/router";
-import { MatButton } from "@angular/material/button";
+import { CommonModule } from "@angular/common";
 import { GlobalService } from "../../services/global";
 import * as API from "../../lib/api";
 
 @Component({
   selector: 'app-verif-pro',
-  imports: [MatFormField, MatLabel, MatInput, ReactiveFormsModule, RouterLink, MatButton],
+  standalone: true,
+  imports: [CommonModule, MatFormFieldModule, MatInputModule, MatButtonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './verif-pro.html',
   styleUrl: './verif-pro.scss',
 })
