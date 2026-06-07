@@ -6,6 +6,7 @@ import { Profil } from './pages/profil/profil';
 import { Update } from './pages/update/update';
 import { Register } from './pages/register/register';
 import { VerifPro } from './pages/verif-pro/verif-pro';
+import { UpdateProfil } from './pages/update-profil/update-profil';
 
 export const routes: Routes = [
     { path: "login", component: Login },
@@ -13,6 +14,7 @@ export const routes: Routes = [
     { path: "acceuil", component: Acceuil },
     { path: "profil", component: Profil },
     { path: "verif-pro", component: VerifPro },
+    { path: "update-profil/:id", component: UpdateProfil },
     { path: ":methodo", component: FicheTech },
     { path: "/update/:update", component: Update }
 ];
