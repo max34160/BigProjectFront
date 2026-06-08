@@ -1,39 +1,80 @@
 <div class="page-wrapper">
-  <h1 class="page-title">Mon profil</h1>
 
-  <p class="profil-firstname">
-    {{global.user.nom}}
-  </p>
-  <button mat-button [routerLink]="['/update/:nom']">
-    Modifier le nom
-  </button>
-  
-  
-  <p class="profil-name">
-    {{global.user.prenom}}
-  </p>
-  <button mat-button [routerLink]="['/update/:prenom']">
-    Modifier le prénom
+  <!-- Avatar -->
+  <div class="avatar-section">
+    <div class="avatar-circle">
+      <mat-icon class="avatar-icon">person</mat-icon>
+    </div>
+    <p class="avatar-name">{{ global.user.prenom }} {{ global.user.nom }}</p>
+  </div>
+
+  <!-- Infos -->
+  <div class="info-card">
+
+    <div class="info-row">
+      <div class="info-content">
+        <span class="info-label">Nom</span>
+        <span class="info-value">{{ global.user.nom }}</span>
+      </div>
+      <button mat-icon-button class="edit-btn" [routerLink]="['/update/:nom']">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+
+    <div class="info-divider"></div>
+
+    <div class="info-row">
+      <div class="info-content">
+        <span class="info-label">Prénom</span>
+        <span class="info-value">{{ global.user.prenom }}</span>
+      </div>
+      <button mat-icon-button class="edit-btn" [routerLink]="['/update/:prenom']">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+
+    <div class="info-divider"></div>
+
+    <div class="info-row">
+      <div class="info-content">
+        <span class="info-label">Âge</span>
+        <span class="info-value">{{ global.user.age }} ans</span>
+      </div>
+      <button mat-icon-button class="edit-btn" [routerLink]="['/update/:age']">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+
+    <div class="info-divider"></div>
+
+    <div class="info-row">
+      <div class="info-content">
+        <span class="info-label">Email</span>
+        <span class="info-value">{{ global.user.email }}</span>
+      </div>
+      <button mat-icon-button class="edit-btn" [routerLink]="['/update/:email']">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+
+    <div class="info-divider"></div>
+
+    <div class="info-row">
+      <div class="info-content">
+        <span class="info-label">Mot de passe</span>
+        <span class="info-value">••••••••</span>
+      </div>
+      <button mat-icon-button class="edit-btn" [routerLink]="['/update/:password']">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Action -->
+  <button mat-flat-button class="btn-pro" [routerLink]="['/verif-pro']">
+    <mat-icon>verified</mat-icon>
+    Passer Pro
   </button>
 
-  <p class="profil-age">
-    {{global.user.age}}
-  </p>
-  <button mat-button [routerLink]="['/update/:age']">
-    Modifier l'âge
-  </button>
-
-  <p class="profil-email">
-    {{global.user.email}}
-  </p>
-  <button mat-button [routerLink]="['/update/:email']">
-    Modifier l'email
-  </button>
-
-  <button mat-button [routerLink]="['/update/:password']">
-    Modifier le mot de passe 
-  </button>
-  <button mat-button [routerLink]="['/verif-pro']">
-    Passer Pro 
-  </button>
 </div>
