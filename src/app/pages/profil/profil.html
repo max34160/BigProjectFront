@@ -1,37 +1,39 @@
 <div class="page-wrapper">
   <h1 class="page-title">Mon profil</h1>
 
-  <div class="avatar-section">
-    <div class="avatar-wrapper">
-      <div class="avatar-circle">
-        <mat-icon class="avatar-icon">person</mat-icon>
-      </div>
-    </div>
-  </div>
+  <p class="profil-firstname">
+    {{global.user.nom}}
+  </p>
+  <button mat-button [routerLink]="['/update/:nom']">
+    Modifier le nom
+  </button>
+  
+  
+  <p class="profil-name">
+    {{global.user.prenom}}
+  </p>
+  <button mat-button [routerLink]="['/update/:prenom']">
+    Modifier le prénom
+  </button>
 
-  <p class="section-label">Mes informations personnelles :</p>
+  <p class="profil-age">
+    {{global.user.age}}
+  </p>
+  <button mat-button [routerLink]="['/update/:age']">
+    Modifier l'âge
+  </button>
 
-  <form class="profil-form">
-    <mat-form-field appearance="outline" class="full-width">
-      <input matInput [value]="global.user?.nom || ''" placeholder="Prénom" readonly>
-    </mat-form-field>
+  <p class="profil-email">
+    {{global.user.email}}
+  </p>
+  <button mat-button [routerLink]="['/update/:email']">
+    Modifier l'email
+  </button>
 
-    <mat-form-field appearance="outline" class="full-width">
-      <input matInput [value]="global.user?.prenom || ''" placeholder="Nom" readonly>
-    </mat-form-field>
-
-    <mat-form-field appearance="outline" class="full-width">
-      <input matInput [value]="global.user?.age ? global.user.age + ' ans' : ''" placeholder="Âge" readonly>
-    </mat-form-field>
-
-    <mat-form-field appearance="outline" class="full-width">
-      <input matInput [value]="global.user?.email || ''" placeholder="Email" readonly>
-    </mat-form-field>
-
-    <mat-form-field appearance="outline" class="full-width">
-      <input matInput type="password" value="placeholder_password" placeholder="Mot de passe" readonly>
-    </mat-form-field>
-  </form>
-
-  <button mat-flat-button class="btn-valider">Valider</button>
+  <button mat-button [routerLink]="['/update/:password']">
+    Modifier le mot de passe 
+  </button>
+  <button mat-button [routerLink]="['/verif-pro']">
+    Passer Pro 
+  </button>
 </div>

@@ -1,1 +1,51 @@
-<p>update works!</p>
+<div class="fiche-tech-container">
+    <h1 class="fiche-tech-title">Modifier votre {{update()?.update}}</h1>
+
+    <form [formGroup]="form" (ngSubmit)="onUpdate()" class="creation-form" novalidate>
+            
+            @if (update().update == "age") {
+                <mat-form-field appearance="outline" class="full-width">
+                    <input matInput type="number" formControlName="update" placeholder="18" />
+                    <mat-error *ngIf="form.get('update')?.hasError('required')">L'âge est requis</mat-error>
+                    <mat-error *ngIf="form.get('update')?.hasError('min') || form.get('age')?.hasError('max')">
+                        L'âge doit être entre 1 et 120
+                    </mat-error>
+                </mat-form-field>
+            } @else if(update().update == "email"){
+                <mat-form-field appearance="outline" class="full-width">
+                    <input matInput type="email" formControlName="update" placeholder="johnnyhallydayforever@hotmail.com" />
+                    <mat-error *ngIf="form.get('update')?.hasError('required')">L'email est requis</mat-error>
+                    <mat-error *ngIf="form.get('update')?.hasError('email')">Format d'email invalide</mat-error>
+                </mat-form-field>
+            } @else if(update().update == "password"){
+                <mat-form-field appearance="outline" class="full-width">
+                    <input matInput [type]="hidePassword ? 'update' : 'text'" formControlName="update" />
+                    <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword"
+                        [attr.aria-label]="'Toggle password visibility'">
+                        <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="form.get('update')?.hasError('required')">Le mot de passe est requis</mat-error>
+                    <mat-error *ngIf="form.get('update')?.hasError('minlength')">
+                        Minimum 8 caractères
+                    </mat-error>
+                </mat-form-field>
+            }@else {  
+                <mat-form-field appearance="outline" class="full-width">
+                    <input matInput formControlName="update" />
+                    <mat-error *ngIf="form.get('update')?.hasError('required')">Une valeur est requise</mat-error>
+                </mat-form-field>
+            }
+
+       
+
+        <div class="actions">
+            <button mat-raised-button type="ngSubmit" class="btn-suivant" [disabled]="form.invalid">
+                Confirmer
+            </button>
+        </div>
+
+    </form>
+    <button mat-button [routerLink]="['/profil']">
+        Retour Profil
+    </button>
+</div>

@@ -13,5 +13,12 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './profil.scss',
 })
 export class Profil {
-  constructor(public global: GlobalService) {}
+  
+
+  constructor(public global: GlobalService, private router: Router) {
+    if(this.global.isPro){
+      this.router.navigate(['/profil-pro']);
+    }
+  }
+  
 }
