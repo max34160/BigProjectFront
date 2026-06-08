@@ -129,6 +129,18 @@ export async function updateUser(id: string, nom: string, prenom: string, age: s
 
 }
 
+export async function searchProsByVille(id_methodo: string, ville = '') {
+    const params = new URLSearchParams({ id_methodo });
+    if (ville) params.set('ville', ville);
+    const reponse = await fetch(`${apiRoot}/pro/search?${params}`, {
+        method: 'GET',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' }
+    });
+    if (!reponse.ok) return [];
+    return await reponse.json();
+}
+
 export async function verifyPro(identificationNationale: string) {
 
     const controller = new AbortController();
