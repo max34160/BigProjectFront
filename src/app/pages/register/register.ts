@@ -27,7 +27,7 @@ import { Router } from '@angular/router';
   templateUrl: './register.html',
   styleUrls: ['./register.scss'],
 })
-export class AccountCreationComponent {
+export class Register {
   form: FormGroup;
   hidePassword = true;
 
@@ -59,6 +59,10 @@ export class AccountCreationComponent {
 
       }
     }
+  }
+
+  async linkLogin() {
+    this.router.navigate(['/logins']);
   }
 
 

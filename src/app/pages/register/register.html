@@ -1,9 +1,9 @@
 <div class="page-wrapper">
-  
+
   <h1 class="page-title">Création de compte</h1>
- 
+
   <form [formGroup]="form" (ngSubmit)="onSubmit()" class="creation-form" novalidate>
- 
+
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Nom</mat-label>
       <input matInput formControlName="nom" placeholder="Jean-Michel" />
@@ -24,7 +24,7 @@
         L'âge doit être entre 1 et 120
       </mat-error>
     </mat-form-field>
- 
+
 
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Email</mat-label>
@@ -32,21 +32,12 @@
       <mat-error *ngIf="form.get('email')?.hasError('required')">L'email est requis</mat-error>
       <mat-error *ngIf="form.get('email')?.hasError('email')">Format d'email invalide</mat-error>
     </mat-form-field>
- 
+
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Mot de passe</mat-label>
-      <input
-        matInput
-        [type]="hidePassword ? 'password' : 'text'"
-        formControlName="password"
-      />
-      <button
-        mat-icon-button
-        matSuffix
-        type="button"
-        (click)="hidePassword = !hidePassword"
-        [attr.aria-label]="'Toggle password visibility'"
-      >
+      <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" />
+      <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword"
+        [attr.aria-label]="'Toggle password visibility'">
         <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
       </button>
       <mat-error *ngIf="form.get('password')?.hasError('required')">Le mot de passe est requis</mat-error>
@@ -59,8 +50,10 @@
       <button mat-raised-button type="ngSubmit" class="btn-suivant" [disabled]="form.invalid">
         Confirmer
       </button>
+      <button mat-raised-button type="button" (click)="linkLogin()">
+        Connectez-vous
+      </button>
     </div>
- 
+
   </form>
 </div>
- 

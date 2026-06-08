@@ -1,9 +1,21 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.page-content {
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 nav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000; 
-  background: white; 
-  border-top: 1px solid #ccc; 
+  flex-shrink: 0;
+  background: white;
+  border-top: 1px solid #ccc;
 }
