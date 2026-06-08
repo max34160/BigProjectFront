@@ -1,9 +1,8 @@
-import { Component, inject, signal, OnInit } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import * as API from "../../lib/api";
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { MatFormField, MatLabel, MatError } from "@angular/material/form-field";
-import { NgIf } from "@angular/common";
 import { MatButton, MatIconButton } from "@angular/material/button";
 import { MatInputModule } from '@angular/material/input';
 import { GlobalService } from '../../services/global';
@@ -11,7 +10,7 @@ import { MatIcon } from "@angular/material/icon";
 
 @Component({
   selector: 'app-update',
-  imports: [MatInputModule, ReactiveFormsModule, MatFormField, MatLabel, MatError, NgIf, MatButton, MatIcon, MatIconButton, RouterLink],
+  imports: [MatInputModule, ReactiveFormsModule, MatFormField, MatLabel, MatError, MatButton, MatIcon, MatIconButton, RouterLink],
   templateUrl: './update.html',
   styleUrl: './update.scss',
 })
