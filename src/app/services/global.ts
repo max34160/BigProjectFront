@@ -1,5 +1,3 @@
-// global.service.ts
-import { P } from '@angular/cdk/keycodes';
 import { Injectable } from '@angular/core';
 import * as API from "../lib/api";
 import { Router } from '@angular/router';
@@ -30,7 +28,6 @@ export class GlobalService {
       }
       this.user = verif.user;
       this.isLogged = true;
-      this.router.navigate(['/profil']);
     }
   }
 }

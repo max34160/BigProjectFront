@@ -30,7 +30,7 @@ export class FicheTech {
         API.getOnMethodo(this.methodoId()),
         API.searchProsByVille(this.methodoId())
       ]);
-      this.methodo.set(data);
+      this.methodo.set(data.methodo ?? data);
       this.pros.set(pros);
     });
   }
