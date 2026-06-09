@@ -23,7 +23,6 @@ $white-10: rgba(255, 255, 255, 0.1);
   gap: 0;
 }
 
-// En-tête méthodologie
 .methodo-header {
   width: 100%;
   max-width: 480px;
@@ -46,7 +45,6 @@ $white-10: rgba(255, 255, 255, 0.1);
   margin: 0;
 }
 
-// Section recherche
 .search-section {
   width: 100%;
   max-width: 480px;
@@ -108,7 +106,6 @@ $white-10: rgba(255, 255, 255, 0.1);
   }
 }
 
-// Résultats
 .results-section {
   width: 100%;
   max-width: 480px;
@@ -145,7 +142,6 @@ $white-10: rgba(255, 255, 255, 0.1);
   opacity: 0.5;
 }
 
-// Liste des pros
 .pros-list {
   display: flex;
   flex-direction: column;
@@ -220,7 +216,6 @@ $white-10: rgba(255, 255, 255, 0.1);
   padding-top: 8px;
 }
 
-// Angular Material overrides
 ::ng-deep {
   .search-form {
     .mat-mdc-form-field {

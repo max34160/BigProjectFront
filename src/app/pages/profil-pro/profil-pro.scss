@@ -37,7 +37,6 @@ $green-accent: #4cde80;
   box-sizing: border-box;
 }
 
-// Avatar
 .avatar-section {
   display: flex;
   flex-direction: column;
@@ -93,7 +92,6 @@ $green-accent: #4cde80;
   height: 14px !important;
 }
 
-// Titres de section
 .section-title {
   width: 100%;
   max-width: 380px;
@@ -106,7 +104,6 @@ $green-accent: #4cde80;
   padding: 0 4px;
 }
 
-// Card infos
 .info-card {
   width: 100%;
   max-width: 380px;
@@ -176,7 +173,6 @@ $green-accent: #4cde80;
   }
 }
 
-// Bouton Se déconnecter
 .btn-logout {
   margin-top: 12px;
   height: 48px;
@@ -204,7 +200,6 @@ $green-accent: #4cde80;
   }
 }
 
-// Ajout méthodologie
 .add-methodo-row {
   width: 100%;
   max-width: 380px;
@@ -259,7 +254,6 @@ $green-accent: #4cde80;
   }
 }
 
-// Material overrides
 ::ng-deep {
   .methodo-select {
     .mat-mdc-form-field {
