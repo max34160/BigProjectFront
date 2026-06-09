@@ -160,6 +160,34 @@ $green-accent: #4cde80;
   }
 }
 
+// Bouton Se déconnecter
+.btn-logout {
+  margin-top: 12px;
+  height: 48px;
+  padding: 0 28px !important;
+  border-radius: 30px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: $white-60 !important;
+  border-color: $white-20 !important;
+  background: transparent !important;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  mat-icon {
+    font-size: 18px !important;
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  &:hover {
+    color: #ff8fab !important;
+    border-color: rgba(255, 143, 171, 0.4) !important;
+    background: rgba(255, 143, 171, 0.08) !important;
+  }
+}
+
 // Ajout méthodologie
 .add-methodo-row {
   width: 100%;

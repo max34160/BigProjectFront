@@ -162,6 +162,11 @@
 
   </div>
 
+  <button mat-stroked-button class="btn-logout" (click)="global.logout()">
+    <mat-icon>logout</mat-icon>
+    Se déconnecter
+  </button>
+
   @if (availableMethodos.length > 0) {
     <div class="add-methodo-row">
       <mat-form-field appearance="outline" class="methodo-select">

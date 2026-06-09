@@ -71,10 +71,15 @@
 
   </div>
 
-  <!-- Action -->
+  <!-- Actions -->
   <button mat-flat-button class="btn-pro" [routerLink]="['/verif-pro']">
     <mat-icon>verified</mat-icon>
     Passer Pro
+  </button>
+
+  <button mat-stroked-button class="btn-logout" (click)="global.logout()">
+    <mat-icon>logout</mat-icon>
+    Se déconnecter
   </button>
 
 </div>

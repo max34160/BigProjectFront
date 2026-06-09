@@ -130,6 +130,13 @@ export async function addNewExercer(id_pro : string , methodoId: string) {
 
 }
 
+export async function logout() {
+    await fetch(apiRoot + "/session", {
+        method: "DELETE",
+        credentials: "include",
+    });
+}
+
 export async function authByToken() {
 
     const reponse = await fetch(apiRoot + "/session/", {

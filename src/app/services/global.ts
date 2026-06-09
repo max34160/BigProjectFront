@@ -18,6 +18,16 @@ export class GlobalService {
     this.verifToken();
   }
 
+  async logout() {
+    await API.logout();
+    this.isLogged = false;
+    this.isPro = false;
+    this.user = null;
+    this.pro = null;
+    this.exercer = null;
+    this.router.navigate(['/login']);
+  }
+
   async verifToken() {
     const verif = await API.authByToken();
     if (verif.user) {
