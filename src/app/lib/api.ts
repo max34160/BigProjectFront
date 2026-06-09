@@ -301,18 +301,13 @@ export async function updateOfficeHours(update: string, id_pro: string) {
 }
 
 export async function isPro(id_user: number) {
-
-    const reponse = await fetch(apiRoot + "/pro/" + String(id_user), {
+    const reponse = await fetch(apiRoot + "/pro/user/" + String(id_user), {
         method: "GET",
         credentials: "include",
-        headers: {
-            'Content-Type': "application/json"
-        }
+        headers: { 'Content-Type': "application/json" }
     });
     const data = await reponse.json();
-
     return data;
-
 }
 
 
@@ -371,15 +366,23 @@ export async function verifyPro(identificationNationale: string) {
 
 }
 
-export async function registerPro(identificationNationale: string, id_user: number, nom_cabinet: string, description: string, horaire_cabinet: string) {
+export async function removeExercer(id_pro: string, id_methodo: string) {
+    const reponse = await fetch(`${apiRoot}/exercer/${id_pro}/${id_methodo}`, {
+        method: 'DELETE',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' }
+    });
+    return await reponse.json();
+}
 
+export async function registerPro(identificationNationale: string, id_user: number, nom_cabinet: string, adresse: string, ville: string, description: string, horaire_cabinet: string) {
     const reponse = await fetch(apiRoot + "/pro/register", {
         method: "POST",
         credentials: "include",
         headers: {
             'Content-Type': "application/json"
         },
-        body: JSON.stringify({ identificationNationale, id_user, nom_cabinet, description, horaire_cabinet })
+        body: JSON.stringify({ identificationNationale, id_user, nom_cabinet, adresse, ville, description, horaire_cabinet })
     });
 
     if (!reponse.ok) {

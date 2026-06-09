@@ -29,6 +29,8 @@ export class VerifPro {
     });
     this.cabinetForm = this.fb.group({
       nom_cabinet: ['', [Validators.required]],
+      adresse: ['', [Validators.required]],
+      ville: ['', [Validators.required]],
       description: ['', [Validators.required]],
       horaire_cabinet: ['', [Validators.required]],
     });
@@ -59,6 +61,8 @@ export class VerifPro {
         this.form.value.idNat,
         this.global.user.id_user,
         this.cabinetForm.value.nom_cabinet,
+        this.cabinetForm.value.adresse,
+        this.cabinetForm.value.ville,
         this.cabinetForm.value.description,
         this.cabinetForm.value.horaire_cabinet,
       );

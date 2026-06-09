@@ -140,4 +140,47 @@
 
   </div>
 
+  <!-- Méthodologies -->
+  <p class="section-title">Méthodologies pratiquées</p>
+  <div class="info-card">
+
+    @if (methodos().length === 0) {
+      <div class="info-row">
+        <span class="info-value empty-text">Aucune méthodologie ajoutée</span>
+      </div>
+    }
+
+    @for (m of methodos(); track m.id_methodo; let last = $last) {
+      <div class="info-row">
+        <div class="info-content">
+          <span class="info-value">{{ methodoTitle(m.id_methodo) }}</span>
+        </div>
+        <button mat-icon-button class="edit-btn delete-btn" (click)="removeMethodo(m.id_methodo)">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+      @if (!last) {
+        <div class="info-divider"></div>
+      }
+    }
+
+  </div>
+
+  @if (availableMethodos.length > 0) {
+    <div class="add-methodo-row">
+      <mat-form-field appearance="outline" class="methodo-select">
+        <mat-label>Ajouter une méthodologie</mat-label>
+        <mat-select [(ngModel)]="selectedMethodoId">
+          @for (m of availableMethodos; track m.id_methodo) {
+            <mat-option [value]="m.id_methodo">{{ m.titre }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <button mat-flat-button class="btn-add" (click)="addMethodo()" [disabled]="!selectedMethodoId">
+        <mat-icon>add</mat-icon>
+        Ajouter
+      </button>
+    </div>
+  }
+
 </div>

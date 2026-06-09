@@ -64,7 +64,7 @@ export class Update {
     if (result && !result.error) {
       if (result.user) this.global.user = result.user;
       if (result.pro) this.global.pro = result.pro;
-      this.router.navigate(['/profil']);
+      this.router.navigate([this.global.isPro ? '/profil-pro' : '/profil']);
     }
   }
 }
