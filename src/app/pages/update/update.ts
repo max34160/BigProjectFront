@@ -22,7 +22,7 @@ export class Update {
   private nameUpdate = signal('');
   private activatedRoute = inject(ActivatedRoute);
 
-  constructor(private fb: FormBuilder, public global: GlobalService, private router: Router) {
+  constructor(private fb: FormBuilder, public global: GlobalService , private router: Router) {
     this.form = this.fb.group({
       update: ['', [Validators.required]],
     });

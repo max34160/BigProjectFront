@@ -52,7 +52,7 @@ export async function getAllMethodologie() {
 
 }
 
-export async function getOne(methodoId: string) {
+export async function getOnMethodo(methodoId: string) {
 
     const reponse = await fetch(apiRoot + "/methodologie/" + methodoId, {
         method: "GET",
@@ -63,6 +63,69 @@ export async function getOne(methodoId: string) {
     });
     const data = await reponse.json();
 
+    return data;
+
+}
+
+export async function getOneByProAndMethodo(id_pro : string , methodoId: string) {
+
+    const reponse = await fetch(apiRoot + "/exercer/"+id_pro+"/" + methodoId, {
+        method: "GET",
+        credentials: "include",
+        headers: {
+            'Content-Type': "application/json"
+        }
+    });
+    const data = await reponse.json();
+
+    return data;
+}
+
+export async function getOneByPro(id_pro : string ) {
+
+    const reponse = await fetch(apiRoot + "/exercer/"+id_pro , {
+        method: "GET",
+        credentials: "include",
+        headers: {
+            'Content-Type': "application/json"
+        }
+    });
+    const data = await reponse.json();
+
+    return data;
+
+}
+
+export async function updateExercer(update : string , id_user : string) {
+
+    const reponse = await fetch(apiRoot + "/exercer/" + id_user, {
+        method: "PUT",
+        credentials: "include",
+        headers: {
+            'Content-Type': "application/json"
+        },
+        body: JSON.stringify({ 
+            id_methodo : update
+        })
+    });
+    const data = await reponse.json();
+
+    return data;
+
+}
+
+export async function addNewExercer(id_pro : string , methodoId: string) {
+    const reponse = await fetch(`${apiRoot}/exercer/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            id_pro:  id_pro,
+            id_methodo: methodoId
+        })
+    });
+    const data = await reponse.json();
     return data;
 
 }
@@ -290,6 +353,7 @@ export async function isPro(id_user: number) {
     return data;
 
 }
+
 
 export async function updateUser(id: string, nom: string, prenom: string, age: string, email: string) {
 
