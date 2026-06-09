@@ -1,81 +1,143 @@
-<div class="profilpro-container">
-  <h1 class="profilpro-title">Profil Pro</h1>
+<div class="page-wrapper">
 
-  <p class="profil-firstname">
-    {{global.user.nom}}
-  </p>
-  <button mat-button [routerLink]="['/update/:nom']">
-    Modifier le nom
-  </button>
+  <!-- Avatar -->
+  <div class="avatar-section">
+    <div class="avatar-circle">
+      <mat-icon class="avatar-icon">person</mat-icon>
+    </div>
+    <p class="avatar-name">{{ global.user.prenom }} {{ global.user.nom }}</p>
+    <span class="pro-badge">
+      <mat-icon class="badge-icon">verified</mat-icon>
+      Professionnel
+    </span>
+  </div>
 
+  <!-- Infos personnelles -->
+  <p class="section-title">Informations personnelles</p>
+  <div class="info-card">
 
-  <p class="profil-name">
-    {{global.user.prenom}}
-  </p>
-  <button mat-button [routerLink]="['/update/:prenom']">
-    Modifier le prénom
-  </button>
+    <div class="info-row">
+      <div class="info-content">
+        <span class="info-label">Nom</span>
+        <span class="info-value">{{ global.user.nom }}</span>
+      </div>
+      <button mat-icon-button class="edit-btn" [routerLink]="['/update/:nom']">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
 
-  <p class="profil-age">
-    {{global.user.age}}
-  </p>
-  <button mat-button [routerLink]="['/update/:age']">
-    Modifier l'âge
-  </button>
+    <div class="info-divider"></div>
 
-  <p class="profil-email">
-    {{global.user.email}}
-  </p>
-  <button mat-button [routerLink]="['/update/:email']">
-    Modifier l'email
-  </button>
+    <div class="info-row">
+      <div class="info-content">
+        <span class="info-label">Prénom</span>
+        <span class="info-value">{{ global.user.prenom }}</span>
+      </div>
+      <button mat-icon-button class="edit-btn" [routerLink]="['/update/:prenom']">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
 
-  <button mat-button [routerLink]="['/update/:password']">
-    Modifier de mot de passe
-  </button>
+    <div class="info-divider"></div>
 
-  <p class="profilpro-nom-cabinet">
-    {{global.pro.nom_cabinet}}
-  </p>
-  <button mat-button [routerLink]="['/update-pro/:nom_cabinet']">
-    Modifier du nom de votre cabinet
-  </button>
+    <div class="info-row">
+      <div class="info-content">
+        <span class="info-label">Âge</span>
+        <span class="info-value">{{ global.user.age }} ans</span>
+      </div>
+      <button mat-icon-button class="edit-btn" [routerLink]="['/update/:age']">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
 
-  <p class="profilpro-nom-cabinet">
-    {{global.exercer.titre}}
-  </p>
-  <button mat-button [routerLink]="['/update-methodo/:exeercer']">
-    Modifier la methodologie exercer
-  </button>
+    <div class="info-divider"></div>
 
+    <div class="info-row">
+      <div class="info-content">
+        <span class="info-label">Email</span>
+        <span class="info-value">{{ global.user.email }}</span>
+      </div>
+      <button mat-icon-button class="edit-btn" [routerLink]="['/update/:email']">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
 
-  <p class="profilpro-adresse">
-    {{global.pro.adresse}}
-  </p>
-  <button mat-button [routerLink]="['/update-pro/:adresse']">
-    Modifier votre adresse
-  </button>
+    <div class="info-divider"></div>
 
-  <p class="profilpro-ville">
-    {{global.pro.ville}}
-  </p>
-  <button mat-button [routerLink]="['/update-pro/:ville']">
-    Modifier votre ville
-  </button>
+    <div class="info-row">
+      <div class="info-content">
+        <span class="info-label">Mot de passe</span>
+        <span class="info-value">••••••••</span>
+      </div>
+      <button mat-icon-button class="edit-btn" [routerLink]="['/update/:password']">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
 
-  <p class="profilpro-description">
-    {{global.pro.description}}
-  </p>
-  <button mat-button [routerLink]="['/update-pro/:description']">
-    Modifier dvotre description
-  </button>
+  </div>
 
-  <p class="profilpro-horraire-cabinet">
-    {{global.pro.horraire_cabinet}}
-  </p>
-  <button mat-button [routerLink]="['/update-pro/:horraire_cabinet']">
-    Modifier vos horraire cabinet
-  </button>
+  <!-- Infos professionnelles -->
+  <p class="section-title">Informations professionnelles</p>
+  <div class="info-card">
 
+    <div class="info-row">
+      <div class="info-content">
+        <span class="info-label">Nom du cabinet</span>
+        <span class="info-value">{{ global.pro?.nom_cabinet || '—' }}</span>
+      </div>
+      <button mat-icon-button class="edit-btn" [routerLink]="['/update/:nom_cabinet']">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+
+    <div class="info-divider"></div>
+
+    <div class="info-row">
+      <div class="info-content">
+        <span class="info-label">Adresse</span>
+        <span class="info-value">{{ global.pro?.adresse || '—' }}</span>
+      </div>
+      <button mat-icon-button class="edit-btn" [routerLink]="['/update/:adresse']">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+
+    <div class="info-divider"></div>
+
+    <div class="info-row">
+      <div class="info-content">
+        <span class="info-label">Ville</span>
+        <span class="info-value">{{ global.pro?.ville || '—' }}</span>
+      </div>
+      <button mat-icon-button class="edit-btn" [routerLink]="['/update/:ville']">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+
+    <div class="info-divider"></div>
+
+    <div class="info-row">
+      <div class="info-content">
+        <span class="info-label">Description</span>
+        <span class="info-value">{{ global.pro?.description || '—' }}</span>
+      </div>
+      <button mat-icon-button class="edit-btn" [routerLink]="['/update/:description']">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+
+    <div class="info-divider"></div>
+
+    <div class="info-row">
+      <div class="info-content">
+        <span class="info-label">Horaires</span>
+        <span class="info-value">{{ global.pro?.horaire_cabinet || '—' }}</span>
+      </div>
+      <button mat-icon-button class="edit-btn" [routerLink]="['/update/:horaire_cabinet']">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+
+  </div>
 
 </div>

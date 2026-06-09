@@ -10,6 +10,7 @@ import * as API from '../../lib/api';
 
 @Component({
   selector: 'app-register',
+  standalone: true,
   imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, RouterLink],
   templateUrl: './register.html',
   styleUrl: './register.scss',
