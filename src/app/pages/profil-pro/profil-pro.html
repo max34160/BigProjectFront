@@ -1,17 +1,24 @@
-<div class="page-wrapper">
+<main class="page-wrapper">
+
+  @if (error()) {
+    <div class="form-error" role="alert">
+      <mat-icon aria-hidden="true">error_outline</mat-icon>
+      {{ error() }}
+    </div>
+  }
 
   <div class="avatar-section">
-    <div class="avatar-circle">
-      <mat-icon class="avatar-icon">person</mat-icon>
+    <div class="avatar-circle" aria-hidden="true">
+      <mat-icon class="avatar-icon" aria-hidden="true">person</mat-icon>
     </div>
     <p class="avatar-name">{{ global.user.prenom }} {{ global.user.nom }}</p>
     <span class="pro-badge">
-      <mat-icon class="badge-icon">verified</mat-icon>
+      <mat-icon class="badge-icon" aria-hidden="true">verified</mat-icon>
       Professionnel
     </span>
   </div>
 
-  <p class="section-title">Informations personnelles</p>
+  <h2 class="section-title">Informations personnelles</h2>
   <div class="info-card">
 
     <div class="info-row">
@@ -74,71 +81,71 @@
 
   </div>
 
-  <p class="section-title">Informations professionnelles</p>
-  <div class="info-card">
+  <h2 class="section-title">Informations professionnelles</h2>
+  <div class="info-card" role="region" aria-label="Informations professionnelles">
 
     <div class="info-row">
       <div class="info-content">
         <span class="info-label">Nom du cabinet</span>
         <span class="info-value">{{ global.pro?.nom_cabinet || '—' }}</span>
       </div>
-      <button mat-icon-button class="edit-btn" [routerLink]="['/update/:nom_cabinet']">
-        <mat-icon>edit</mat-icon>
+      <button mat-icon-button class="edit-btn" aria-label="Modifier le nom du cabinet" [routerLink]="['/update/:nom_cabinet']">
+        <mat-icon aria-hidden="true">edit</mat-icon>
       </button>
     </div>
 
-    <div class="info-divider"></div>
+    <div class="info-divider" role="separator"></div>
 
     <div class="info-row">
       <div class="info-content">
         <span class="info-label">Adresse</span>
         <span class="info-value">{{ global.pro?.adresse || '—' }}</span>
       </div>
-      <button mat-icon-button class="edit-btn" [routerLink]="['/update/:adresse']">
-        <mat-icon>edit</mat-icon>
+      <button mat-icon-button class="edit-btn" aria-label="Modifier l'adresse" [routerLink]="['/update/:adresse']">
+        <mat-icon aria-hidden="true">edit</mat-icon>
       </button>
     </div>
 
-    <div class="info-divider"></div>
+    <div class="info-divider" role="separator"></div>
 
     <div class="info-row">
       <div class="info-content">
         <span class="info-label">Ville</span>
         <span class="info-value">{{ global.pro?.ville || '—' }}</span>
       </div>
-      <button mat-icon-button class="edit-btn" [routerLink]="['/update/:ville']">
-        <mat-icon>edit</mat-icon>
+      <button mat-icon-button class="edit-btn" aria-label="Modifier la ville" [routerLink]="['/update/:ville']">
+        <mat-icon aria-hidden="true">edit</mat-icon>
       </button>
     </div>
 
-    <div class="info-divider"></div>
+    <div class="info-divider" role="separator"></div>
 
     <div class="info-row">
       <div class="info-content">
         <span class="info-label">Description</span>
         <span class="info-value">{{ global.pro?.description || '—' }}</span>
       </div>
-      <button mat-icon-button class="edit-btn" [routerLink]="['/update/:description']">
-        <mat-icon>edit</mat-icon>
+      <button mat-icon-button class="edit-btn" aria-label="Modifier la description" [routerLink]="['/update/:description']">
+        <mat-icon aria-hidden="true">edit</mat-icon>
       </button>
     </div>
 
-    <div class="info-divider"></div>
+    <div class="info-divider" role="separator"></div>
 
     <div class="info-row">
       <div class="info-content">
         <span class="info-label">Horaires</span>
         <span class="info-value">{{ global.pro?.horaire_cabinet || '—' }}</span>
       </div>
-      <button mat-icon-button class="edit-btn" [routerLink]="['/update/:horaire_cabinet']">
-        <mat-icon>edit</mat-icon>
+      <button mat-icon-button class="edit-btn" aria-label="Modifier les horaires" [routerLink]="['/update/:horaire_cabinet']">
+        <mat-icon aria-hidden="true">edit</mat-icon>
       </button>
     </div>
 
   </div>
 
-  <p class="section-title">Méthodologies pratiquées</p>
-  <div class="info-card">
+  <h2 class="section-title">Méthodologies pratiquées</h2>
+  <div class="info-card" role="region" aria-label="Méthodologies pratiquées">
 
     @if (methodos().length === 0) {
       <div class="info-row">
@@ -151,12 +158,14 @@
         <div class="info-content">
           <span class="info-value">{{ methodoTitle(m.id_methodo) }}</span>
         </div>
-        <button mat-icon-button class="edit-btn delete-btn" (click)="removeMethodo(m.id_methodo)">
-          <mat-icon>close</mat-icon>
+        <button mat-icon-button class="edit-btn delete-btn"
+                [attr.aria-label]="'Supprimer ' + methodoTitle(m.id_methodo)"
+                (click)="removeMethodo(m.id_methodo)">
+          <mat-icon aria-hidden="true">close</mat-icon>
         </button>
       </div>
       @if (!last) {
-        <div class="info-divider"></div>
+        <div class="info-divider" role="separator"></div>
       }
     }
 
@@ -166,22 +175,22 @@
     <div class="add-methodo-row">
       <mat-form-field appearance="outline" class="methodo-select">
         <mat-label>Ajouter une méthodologie</mat-label>
-        <mat-select [(ngModel)]="selectedMethodoId">
+        <mat-select [(ngModel)]="selectedMethodoId" aria-label="Sélectionner une méthodologie à ajouter">
           @for (m of availableMethodos; track m.id_methodo) {
             <mat-option [value]="m.id_methodo">{{ m.titre }}</mat-option>
           }
         </mat-select>
       </mat-form-field>
       <button mat-flat-button class="btn-add" (click)="addMethodo()" [disabled]="!selectedMethodoId">
-        <mat-icon>add</mat-icon>
+        <mat-icon aria-hidden="true">add</mat-icon>
         Ajouter
       </button>
     </div>
   }
 
   <button mat-stroked-button class="btn-logout" (click)="global.logout()">
-    <mat-icon>logout</mat-icon>
+    <mat-icon aria-hidden="true">logout</mat-icon>
     Se déconnecter
   </button>
 
-</div>
+</main>

@@ -13,6 +13,7 @@ import * as API from '../../lib/api';
 export class Acceuil implements OnInit {
 
   methodologies = signal<any[]>([]);
+  error = signal('');
 
   private iconMap: Record<string, string> = {
     'Médecin': 'local_hospital',
@@ -35,8 +36,12 @@ export class Acceuil implements OnInit {
   async ngOnInit() {
     this.titleService.setTitle('BigProject — Trouvez votre praticien en médecine douce');
     this.metaService.updateTag({ name: 'description', content: 'Trouvez un praticien en médecine douce et bien-être près de chez vous : médecin, infirmier, kinésithérapeute, psychologue et bien d\'autres spécialités.' });
-    const data = await API.getAllMethodologie();
-    this.methodologies.set(data);
+    try {
+      const data = await API.getAllMethodologie();
+      this.methodologies.set(data);
+    } catch {
+      this.error.set('Impossible de charger les méthodologies. Veuillez réessayer plus tard.');
+    }
   }
 
   iconFor(titre: string): string {

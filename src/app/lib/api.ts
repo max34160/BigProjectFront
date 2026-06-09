@@ -38,33 +38,19 @@ export async function register(nom: string, prenom: string , age : string , emai
 }
 
 export async function getAllMethodologie() {
-
     const reponse = await fetch(apiRoot + "/methodologie/all/", {
         method: "GET",
-        credentials: "include",
-        headers: {
-            'Content-Type': "application/json"
-        }
+        headers: { 'Content-Type': "application/json" }
     });
-    const data = await reponse.json();
-
-    return data;
-
+    return await reponse.json();
 }
 
 export async function getOnMethodo(methodoId: string) {
-
     const reponse = await fetch(apiRoot + "/methodologie/" + methodoId, {
         method: "GET",
-        credentials: "include",
-        headers: {
-            'Content-Type': "application/json"
-        }
+        headers: { 'Content-Type': "application/json" }
     });
-    const data = await reponse.json();
-
-    return data;
-
+    return await reponse.json();
 }
 
 export async function getOneByProAndMethodo(id_pro : string , methodoId: string) {
@@ -339,7 +325,6 @@ export async function searchProsByVille(id_methodo: string, ville = '') {
     if (ville) params.set('ville', ville);
     const reponse = await fetch(`${apiRoot}/pro/search?${params}`, {
         method: 'GET',
-        credentials: 'include',
         headers: { 'Content-Type': 'application/json' }
     });
     if (!reponse.ok) return [];

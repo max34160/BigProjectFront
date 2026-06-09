@@ -18,6 +18,7 @@ export class Login {
 
   form: FormGroup;
   hidePassword = true;
+  error = '';
 
   constructor(private fb: FormBuilder, private router: Router, public global: GlobalService) {
     this.form = this.fb.group({
@@ -27,7 +28,9 @@ export class Login {
   }
 
   async submitForm() {
-    if (this.form.valid) {
+    if (!this.form.valid) return;
+    this.error = '';
+    try {
       const result = await API.login(this.form.value.email, this.form.value.password);
       if (result.token) {
         const isPro = await API.isPro(result.user.id_user);
@@ -38,7 +41,11 @@ export class Login {
         this.global.user = result.user;
         this.global.isLogged = true;
         this.router.navigate([this.global.isPro ? '/profil-pro' : '/profil']);
+      } else {
+        this.error = result.message ?? 'Email ou mot de passe incorrect.';
       }
+    } catch {
+      this.error = 'Connexion impossible. Vérifiez votre connexion et réessayez.';
     }
   }
 

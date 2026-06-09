@@ -53,6 +53,23 @@ $white-10: rgba(255, 255, 255, 0.1);
   line-height: 1.5;
 }
 
+// Bannière d'erreur réseau
+.form-error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 100, 100, 0.18);
+  border: 1px solid rgba(255, 100, 100, 0.4);
+  border-radius: 12px;
+  color: #ffb3b3;
+  font-size: 14px;
+  padding: 12px 16px;
+  width: 100%;
+  max-width: 380px;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+}
+
 // Formulaire
 .login-form {
   width: 100%;

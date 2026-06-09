@@ -19,13 +19,19 @@ export class ProfilPro implements OnInit {
   methodos = signal<any[]>([]);
   allMethodos = signal<any[]>([]);
   selectedMethodoId: number | null = null;
+  error = signal('');
 
   constructor(public global: GlobalService) {}
 
   async ngOnInit() {
-    const all = await API.getAllMethodologie();
-    this.allMethodos.set(all);
-    await this.loadMethodos();
+    this.error.set('');
+    try {
+      const all = await API.getAllMethodologie();
+      this.allMethodos.set(all);
+      await this.loadMethodos();
+    } catch {
+      this.error.set('Impossible de charger les données. Veuillez réessayer plus tard.');
+    }
   }
 
   async loadMethodos() {
@@ -46,14 +52,24 @@ export class ProfilPro implements OnInit {
 
   async addMethodo() {
     if (!this.selectedMethodoId || !this.global.pro?.id_pro) return;
-    await API.addNewExercer(String(this.global.pro.id_pro), String(this.selectedMethodoId));
-    this.selectedMethodoId = null;
-    await this.loadMethodos();
+    this.error.set('');
+    try {
+      await API.addNewExercer(String(this.global.pro.id_pro), String(this.selectedMethodoId));
+      this.selectedMethodoId = null;
+      await this.loadMethodos();
+    } catch {
+      this.error.set('Impossible d\'ajouter la méthodologie. Veuillez réessayer.');
+    }
   }
 
   async removeMethodo(id_methodo: number) {
     if (!this.global.pro?.id_pro) return;
-    await API.removeExercer(String(this.global.pro.id_pro), String(id_methodo));
-    await this.loadMethodos();
+    this.error.set('');
+    try {
+      await API.removeExercer(String(this.global.pro.id_pro), String(id_methodo));
+      await this.loadMethodos();
+    } catch {
+      this.error.set('Impossible de supprimer la méthodologie. Veuillez réessayer.');
+    }
   }
 }

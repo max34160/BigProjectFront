@@ -1,71 +1,71 @@
-<div class="page-wrapper">
+<main class="page-wrapper">
 
   <!-- Avatar -->
-  <div class="avatar-section">
+  <div class="avatar-section" aria-hidden="true">
     <div class="avatar-circle">
-      <mat-icon class="avatar-icon">person</mat-icon>
+      <mat-icon class="avatar-icon" aria-hidden="true">person</mat-icon>
     </div>
     <p class="avatar-name">{{ global.user.prenom }} {{ global.user.nom }}</p>
   </div>
 
   <!-- Infos -->
-  <div class="info-card">
+  <div class="info-card" role="region" aria-label="Informations personnelles">
 
     <div class="info-row">
       <div class="info-content">
         <span class="info-label">Nom</span>
         <span class="info-value">{{ global.user.nom }}</span>
       </div>
-      <button mat-icon-button class="edit-btn" [routerLink]="['/update/:nom']">
-        <mat-icon>edit</mat-icon>
+      <button mat-icon-button class="edit-btn" aria-label="Modifier le nom" [routerLink]="['/update/:nom']">
+        <mat-icon aria-hidden="true">edit</mat-icon>
       </button>
     </div>
 
-    <div class="info-divider"></div>
+    <div class="info-divider" role="separator"></div>
 
     <div class="info-row">
       <div class="info-content">
         <span class="info-label">Prénom</span>
         <span class="info-value">{{ global.user.prenom }}</span>
       </div>
-      <button mat-icon-button class="edit-btn" [routerLink]="['/update/:prenom']">
-        <mat-icon>edit</mat-icon>
+      <button mat-icon-button class="edit-btn" aria-label="Modifier le prénom" [routerLink]="['/update/:prenom']">
+        <mat-icon aria-hidden="true">edit</mat-icon>
       </button>
     </div>
 
-    <div class="info-divider"></div>
+    <div class="info-divider" role="separator"></div>
 
     <div class="info-row">
       <div class="info-content">
         <span class="info-label">Âge</span>
         <span class="info-value">{{ global.user.age }} ans</span>
       </div>
-      <button mat-icon-button class="edit-btn" [routerLink]="['/update/:age']">
-        <mat-icon>edit</mat-icon>
+      <button mat-icon-button class="edit-btn" aria-label="Modifier l'âge" [routerLink]="['/update/:age']">
+        <mat-icon aria-hidden="true">edit</mat-icon>
       </button>
     </div>
 
-    <div class="info-divider"></div>
+    <div class="info-divider" role="separator"></div>
 
     <div class="info-row">
       <div class="info-content">
         <span class="info-label">Email</span>
         <span class="info-value">{{ global.user.email }}</span>
       </div>
-      <button mat-icon-button class="edit-btn" [routerLink]="['/update/:email']">
-        <mat-icon>edit</mat-icon>
+      <button mat-icon-button class="edit-btn" aria-label="Modifier l'email" [routerLink]="['/update/:email']">
+        <mat-icon aria-hidden="true">edit</mat-icon>
       </button>
     </div>
 
-    <div class="info-divider"></div>
+    <div class="info-divider" role="separator"></div>
 
     <div class="info-row">
       <div class="info-content">
         <span class="info-label">Mot de passe</span>
-        <span class="info-value">••••••••</span>
+        <span class="info-value" aria-label="Mot de passe masqué">••••••••</span>
       </div>
-      <button mat-icon-button class="edit-btn" [routerLink]="['/update/:password']">
-        <mat-icon>edit</mat-icon>
+      <button mat-icon-button class="edit-btn" aria-label="Modifier le mot de passe" [routerLink]="['/update/:password']">
+        <mat-icon aria-hidden="true">edit</mat-icon>
       </button>
     </div>
 
@@ -73,13 +73,13 @@
 
   <!-- Actions -->
   <button mat-flat-button class="btn-pro" [routerLink]="['/verif-pro']">
-    <mat-icon>verified</mat-icon>
+    <mat-icon aria-hidden="true">verified</mat-icon>
     Passer Pro
   </button>
 
   <button mat-stroked-button class="btn-logout" (click)="global.logout()">
-    <mat-icon>logout</mat-icon>
+    <mat-icon aria-hidden="true">logout</mat-icon>
     Se déconnecter
   </button>
 
-</div>
+</main>
