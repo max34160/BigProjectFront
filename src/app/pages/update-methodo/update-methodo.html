@@ -1,9 +1,16 @@
-<h4>Basic mat-select</h4>
-<mat-form-field>
-  <mat-label>Favorite food</mat-label>
-  <mat-select>
-    @for (food of images; track food) {
-      <mat-option [value]="food.value">{{food.viewValue}}</mat-option>
-    }
-  </mat-select>
-</mat-form-field>
+<h4>Modifier la methodologie {{update()?.update}}</h4>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="creation-form" novalidate>
+  <mat-form-field>
+    <mat-select  formControlName="methodo">
+      @for (food of images; track food) {
+      <mat-option [value]="food.id_methodo">{{food.titre}}</mat-option>
+      }
+    </mat-select>
+    <mat-error *ngIf="form.get('methodo')?.hasError('required')">Un choix est requis</mat-error>
+    
+
+    <button mat-raised-button type="ngSubmit" class="btn-suivant" [disabled]="form.invalid">
+      Confirmer
+    </button>
+  </mat-form-field>
+</form>

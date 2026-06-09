@@ -13,6 +13,7 @@ export class GlobalService {
   public isPro: boolean = false;
   public user: any = null;
   public pro: any = null;
+  public exercer: any = null;
 
 
   constructor(private router: Router) {

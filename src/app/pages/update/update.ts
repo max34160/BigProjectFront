@@ -1,5 +1,5 @@
 import { Component, inject, signal, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import * as API from "../../lib/api";
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { MatFormField, MatLabel, MatError } from "@angular/material/form-field";
@@ -23,7 +23,7 @@ export class Update {
   private nameUpdate = signal('');
   private activatedRoute = inject(ActivatedRoute);
 
-  constructor(private fb: FormBuilder, public global: GlobalService) {
+  constructor(private fb: FormBuilder, public global: GlobalService , private router: Router) {
     this.form = this.fb.group({
       update: ['', [Validators.required]],
     });
@@ -41,6 +41,7 @@ export class Update {
         const result = await API.updateNameUser(this.form.value.update, this.global.user.id_user);
         if (result.user) {
           this.global.user = result.user;
+          this.router.navigate(['/profil']);
         }
       } else if (this.nameUpdate() == ":prenom") {
         const result = await API.updateFirstNameUser(this.form.value.update, this.global.user.id_user);

@@ -27,7 +27,7 @@ export class FicheTech {
     this.activatedRoute.params.subscribe(async (params) => {
       this.methodoId.set(params['methodo']);
       const [data, pros] = await Promise.all([
-        API.getOne(this.methodoId()),
+        API.getOnMethodo(this.methodoId()),
         API.searchProsByVille(this.methodoId())
       ]);
       this.methodo.set(data);

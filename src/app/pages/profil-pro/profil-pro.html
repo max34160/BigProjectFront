@@ -1,4 +1,4 @@
-<div class="profilpro-container" >
+<div class="profilpro-container">
   <h1 class="profilpro-title">Profil Pro</h1>
 
   <p class="profil-firstname">
@@ -7,8 +7,8 @@
   <button mat-button [routerLink]="['/update/:nom']">
     Modifier le nom
   </button>
-  
-  
+
+
   <p class="profil-name">
     {{global.user.prenom}}
   </p>
@@ -31,28 +31,36 @@
   </button>
 
   <button mat-button [routerLink]="['/update/:password']">
-    Modifier de mot de passe 
+    Modifier de mot de passe
   </button>
 
   <p class="profilpro-nom-cabinet">
     {{global.pro.nom_cabinet}}
   </p>
   <button mat-button [routerLink]="['/update-pro/:nom_cabinet']">
-    Modifier du nom de votre cabinet 
+    Modifier du nom de votre cabinet
   </button>
 
-<p class="profilpro-adresse">
+  <p class="profilpro-nom-cabinet">
+    {{global.exercer.titre}}
+  </p>
+  <button mat-button [routerLink]="['/update-methodo/:exeercer']">
+    Modifier la methodologie exercer
+  </button>
+
+
+  <p class="profilpro-adresse">
     {{global.pro.adresse}}
   </p>
   <button mat-button [routerLink]="['/update-pro/:adresse']">
-    Modifier votre adresse  
+    Modifier votre adresse
   </button>
 
   <p class="profilpro-ville">
     {{global.pro.ville}}
   </p>
   <button mat-button [routerLink]="['/update-pro/:ville']">
-    Modifier votre ville  
+    Modifier votre ville
   </button>
 
   <p class="profilpro-description">
@@ -61,13 +69,13 @@
   <button mat-button [routerLink]="['/update-pro/:description']">
     Modifier dvotre description
   </button>
-  
+
   <p class="profilpro-horraire-cabinet">
     {{global.pro.horraire_cabinet}}
   </p>
   <button mat-button [routerLink]="['/update-pro/:horraire_cabinet']">
-    Modifier vos horraire cabinet  
+    Modifier vos horraire cabinet
   </button>
-  
-  
+
+
 </div>

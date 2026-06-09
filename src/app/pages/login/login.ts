@@ -34,6 +34,11 @@ export class Login {
         if (isPro.pro) {
           this.global.pro = isPro.pro;
           this.global.isPro = true;
+          const isExercer = await API.getOneByPro(this.global.pro.id_pro);
+          if(isExercer.exercer){
+            const findMethodo = await API.getOnMethodo(isExercer.exercer.id_methodo)
+            this.global.exercer = findMethodo.methodo.titre;
+          }
         }
         this.global.user = result.user;
         this.global.isLogged = true;
