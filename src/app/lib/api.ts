@@ -33,7 +33,6 @@ export async function register(nom: string, prenom: string , age : string , emai
         })
     });
     const data = await reponse.json();
-    console.log('Utilisateur enregistré:', data);
     return data;
 
 }
