@@ -64,6 +64,19 @@ $white-10: rgba(255, 255, 255, 0.1);
   display: flex;
   gap: 12px;
   align-items: flex-start;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+
+    .search-field {
+      width: 100%;
+    }
+
+    .btn-search {
+      width: 100%;
+      justify-content: center;
+    }
+  }
 }
 
 .search-field {

@@ -1,5 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Title, Meta } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -22,6 +23,8 @@ export class FicheTech {
 
   private methodoId = signal('');
   private activatedRoute = inject(ActivatedRoute);
+  private titleService = inject(Title);
+  private metaService = inject(Meta);
 
   constructor() {
     this.activatedRoute.params.subscribe(async (params) => {
@@ -30,8 +33,13 @@ export class FicheTech {
         API.getOnMethodo(this.methodoId()),
         API.searchProsByVille(this.methodoId())
       ]);
-      this.methodo.set(data.methodo ?? data);
+      const methodo = data.methodo ?? data;
+      this.methodo.set(methodo);
       this.pros.set(pros);
+      if (methodo?.titre) {
+        this.titleService.setTitle(`${methodo.titre} — Trouver un praticien | BigProject`);
+        this.metaService.updateTag({ name: 'description', content: `Trouvez un praticien spécialisé en ${methodo.titre} près de chez vous. ${methodo.descriptif ?? ''}`.trim() });
+      }
     });
   }
 

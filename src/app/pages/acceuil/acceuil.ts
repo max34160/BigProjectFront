@@ -1,5 +1,6 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { Router } from '@angular/router';
+import { Title, Meta } from '@angular/platform-browser';
 import { MatIconModule } from '@angular/material/icon';
 import * as API from '../../lib/api';
 
@@ -29,9 +30,11 @@ export class Acceuil implements OnInit {
     'Psychomotricien': 'sports_gymnastics',
   };
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private titleService: Title, private metaService: Meta) {}
 
   async ngOnInit() {
+    this.titleService.setTitle('BigProject — Trouvez votre praticien en médecine douce');
+    this.metaService.updateTag({ name: 'description', content: 'Trouvez un praticien en médecine douce et bien-être près de chez vous : médecin, infirmier, kinésithérapeute, psychologue et bien d\'autres spécialités.' });
     const data = await API.getAllMethodologie();
     this.methodologies.set(data);
   }

@@ -135,6 +135,11 @@ $border: #e5e7eb;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 14px;
+
+  @media (max-width: 360px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
 }
 
 .methodo-card {

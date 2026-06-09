@@ -196,6 +196,16 @@ $green-accent: #4cde80;
   align-items: center;
   gap: 12px;
   margin-top: 12px;
+
+  @media (max-width: 400px) {
+    flex-direction: column;
+    align-items: stretch;
+
+    .btn-add {
+      width: 100%;
+      justify-content: center;
+    }
+  }
 }
 
 .methodo-select {
