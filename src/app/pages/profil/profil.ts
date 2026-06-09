@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { GlobalService } from '../../services/global';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -10,7 +11,7 @@ import { RouterLink } from "@angular/router";
 @Component({
   selector: 'app-profil',
   standalone: true,
-  imports: [MatButtonModule, MatFormFieldModule, MatInputModule, MatIconModule , RouterLink],
+  imports: [MatButtonModule, MatFormFieldModule, MatInputModule, MatIconModule, RouterLink , RouterLink],
   templateUrl: './profil.html',
   styleUrl: './profil.scss',
 })
