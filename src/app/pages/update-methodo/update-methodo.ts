@@ -48,19 +48,17 @@ export class UpdateMethodo implements OnInit {
   }
 
   async onSubmit(): Promise<void> {
-    if (this.form.valid) {
-      const result = await API.getOneByPro(this.global.pro.id_pro);
-      if (result.exercer) {
-        const update = await API.updateExercer(this.form.value.methodo, this.global.pro.id_pro ,this.global.exercer.id_methodologie);
-        const findMethodo = await API.getOnMethodo(update.exercer.id_methodologie)
-        this.global.exercer = {titre : findMethodo.methodo.titre , id_methodologie : findMethodo.methodo.id_methodologie};
-        this.router.navigate(['/profil']);
-      } else {
-        const newExercer = await API.addNewExercer(this.global.pro.id_pro,this.form.value.methodo );
-        const findMethodo = await API.getOnMethodo(newExercer.exercer.id_methodologie)
-        this.global.exercer = { titre : findMethodo.methodo.titre , id_methodologie : newExercer.exercer.id_methodologie};
-        this.router.navigate(['/profil']);
-      }
+      if (this.form.valid) {
+        const result = await API.getOneByProAndMethodo(this.global.pro.id_pro,this.form.value.methodo);
+        if(result.exercer){
+          const update = await API.updateExercer(this.form.value.methodo,this.global.pro.id_pro);
+          const findMethodo = await API.getOnMethodo(update.exercer.id_methodologie)
+          this.global.exercer = findMethodo.methodo.titre;
+        }else{
+          const newExercer = await API.addNewExercer(this.form.value.methodo,this.global.pro.id_pro);
+          const findMethodo = await API.getOnMethodo(newExercer.exercer.id_methodologie)
+          this.global.exercer = findMethodo.methodo.titre;
+        }
 
     }
   }

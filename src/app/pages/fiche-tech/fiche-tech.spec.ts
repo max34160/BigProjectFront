@@ -11,7 +11,7 @@ vi.mock('../../lib/api', () => ({
 
 import * as API from '../../lib/api';
 
-const mockMethodo = { id_methodo: 1, titre: 'Médecin', descriptif: 'Médecin généraliste.' };
+const mockMethodo = { id_methodologie: 1, titre: 'Médecin', descriptif: 'Médecin généraliste.' };
 const mockPros = [
   { id_pro: 1, prenom: 'Jean', nom: 'Dupont', nom_cabinet: 'Cabinet Santé', ville: 'Marseille' },
   { id_pro: 2, prenom: 'Marie', nom: 'Martin', nom_cabinet: 'Centre Médical', ville: 'Paris' },

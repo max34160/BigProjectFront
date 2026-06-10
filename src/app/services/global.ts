@@ -13,9 +13,10 @@ export class GlobalService {
   public pro: any = null;
   public exercer: any = null;
 
+  public readonly ready: Promise<void>;
 
   constructor(private router: Router) {
-    this.verifToken();
+    this.ready = this.verifToken();
   }
 
   async logout() {

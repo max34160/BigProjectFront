@@ -10,9 +10,9 @@ vi.mock('../../lib/api', () => ({
 import * as API from '../../lib/api';
 
 const mockMethodologies = [
-  { id_methodo: 1, titre: 'Médecin', descriptif: 'Médecin généraliste.' },
-  { id_methodo: 2, titre: 'Infirmier', descriptif: 'Soins infirmiers.' },
-  { id_methodo: 3, titre: 'Pharmacien', descriptif: 'Expert du médicament.' },
+  { id_methodologie: 1, titre: 'Médecin', descriptif: 'Médecin généraliste.' },
+  { id_methodologie: 2, titre: 'Infirmier', descriptif: 'Soins infirmiers.' },
+  { id_methodologie: 3, titre: 'Pharmacien', descriptif: 'Expert du médicament.' },
 ];
 
 describe('Acceuil', () => {
