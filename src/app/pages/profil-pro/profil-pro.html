@@ -153,14 +153,14 @@
       </div>
     }
 
-    @for (m of methodos(); track m.id_methodo; let last = $last) {
+    @for (m of methodos(); track m.id_methodologie; let last = $last) {
       <div class="info-row">
         <div class="info-content">
-          <span class="info-value">{{ methodoTitle(m.id_methodo) }}</span>
+          <span class="info-value">{{ methodoTitle(m.id_methodologie) }}</span>
         </div>
         <button mat-icon-button class="edit-btn delete-btn"
-                [attr.aria-label]="'Supprimer ' + methodoTitle(m.id_methodo)"
-                (click)="removeMethodo(m.id_methodo)">
+                [attr.aria-label]="'Supprimer ' + methodoTitle(m.id_methodologie)"
+                (click)="removeMethodo(m.id_methodologie)">
           <mat-icon aria-hidden="true">close</mat-icon>
         </button>
       </div>
@@ -171,13 +171,13 @@
 
   </div>
 
-  @if (availableMethodos.length > 0) {
+  @if (availableMethodos().length > 0) {
     <div class="add-methodo-row">
       <mat-form-field appearance="outline" class="methodo-select">
         <mat-label>Ajouter une méthodologie</mat-label>
-        <mat-select [(ngModel)]="selectedMethodoId" aria-label="Sélectionner une méthodologie à ajouter">
-          @for (m of availableMethodos; track m.id_methodo) {
-            <mat-option [value]="m.id_methodo">{{ m.titre }}</mat-option>
+        <mat-select [value]="selectedMethodoId" (selectionChange)="selectedMethodoId = $event.value" aria-label="Sélectionner une méthodologie à ajouter">
+          @for (m of availableMethodos(); track m.id_methodologie) {
+            <mat-option [value]="m.id_methodologie">{{ m.titre }}</mat-option>
           }
         </mat-select>
       </mat-form-field>

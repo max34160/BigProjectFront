@@ -1,17 +1,16 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, computed } from '@angular/core';
 import { GlobalService } from '../../services/global';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import * as API from '../../lib/api';
 
 @Component({
   selector: 'app-profil-pro',
   standalone: true,
-  imports: [MatButtonModule, MatIconModule, MatFormFieldModule, MatSelectModule, FormsModule, RouterLink],
+  imports: [MatButtonModule, MatIconModule, MatFormFieldModule, MatSelectModule, RouterLink],
   templateUrl: './profil-pro.html',
   styleUrl: './profil-pro.scss',
 })
@@ -26,7 +25,7 @@ export class ProfilPro implements OnInit {
   async ngOnInit() {
     this.error.set('');
     try {
-      const all = await API.getAllMethodologie();
+      const [all] = await Promise.all([API.getAllMethodologie(), this.global.ready]);
       this.allMethodos.set(all);
       await this.loadMethodos();
     } catch {
@@ -40,15 +39,15 @@ export class ProfilPro implements OnInit {
     this.methodos.set(result.exercer ?? []);
   }
 
-  methodoTitle(id_methodo: number): string {
-    const m = this.allMethodos().find((m: any) => m.id_methodo === id_methodo);
+  methodoTitle(id_methodologie: number): string {
+    const m = this.allMethodos().find((m: any) => m.id_methodologie === id_methodologie);
     return m?.titre ?? 'Inconnue';
   }
 
-  get availableMethodos(): any[] {
-    const assigned = new Set(this.methodos().map((e: any) => e.id_methodo));
-    return this.allMethodos().filter((m: any) => !assigned.has(m.id_methodo));
-  }
+  availableMethodos = computed(() => {
+    const assigned = new Set(this.methodos().map((e: any) => e.id_methodologie));
+    return this.allMethodos().filter((m: any) => !assigned.has(m.id_methodologie));
+  });
 
   async addMethodo() {
     if (!this.selectedMethodoId || !this.global.pro?.id_pro) return;
@@ -62,14 +61,19 @@ export class ProfilPro implements OnInit {
     }
   }
 
-  async removeMethodo(id_methodo: number) {
+  async removeMethodo(id_methodologie: number) {
     if (!this.global.pro?.id_pro) return;
     this.error.set('');
     try {
-      await API.removeExercer(String(this.global.pro.id_pro), String(id_methodo));
-      await this.loadMethodos();
+      await API.removeExercer(String(this.global.pro.id_pro), String(id_methodologie));
     } catch {
       this.error.set('Impossible de supprimer la méthodologie. Veuillez réessayer.');
+      return;
     }
+    // Mise à jour immédiate de la liste sans attendre le rechargement
+    this.methodos.set(this.methodos().filter((m: any) => m.id_methodologie !== id_methodologie));
+    try {
+      await this.loadMethodos();
+    } catch { }
   }
 }

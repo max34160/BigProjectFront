@@ -23,14 +23,14 @@
       </div>
     } @else {
       <div class="methodo-grid" role="list">
-        @for (m of methodologies(); track m.id_methodo) {
+        @for (m of methodologies(); track m.id_methodologie) {
           <div class="methodo-card"
                role="listitem button"
                tabindex="0"
                [attr.aria-label]="'Voir les praticiens en ' + m.titre"
-               (click)="goToFicheTech(m.id_methodo)"
-               (keydown.enter)="goToFicheTech(m.id_methodo)"
-               (keydown.space)="goToFicheTech(m.id_methodo)">
+               (click)="goToFicheTech(m.id_methodologie)"
+               (keydown.enter)="goToFicheTech(m.id_methodologie)"
+               (keydown.space)="goToFicheTech(m.id_methodologie)">
             <div class="methodo-thumb" aria-hidden="true">
               @if (m.img_presentation) {
                 <img [src]="m.img_presentation" [alt]="m.titre" loading="lazy" (error)="img.style.display='none'" #img />

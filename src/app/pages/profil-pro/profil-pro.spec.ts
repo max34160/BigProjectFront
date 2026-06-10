@@ -17,9 +17,9 @@ import * as API from '../../lib/api';
 const mockUser = { id_user: 1, nom: 'Dupont', prenom: 'Jean', age: 30, email: 'jean@test.fr' };
 const mockPro  = { id_pro: 1, nom_cabinet: 'Cabinet Test', ville: 'Marseille' };
 const allMethodos = [
-  { id_methodo: 1, titre: 'Médecin' },
-  { id_methodo: 2, titre: 'Infirmier' },
-  { id_methodo: 3, titre: 'Pharmacien' },
+  { id_methodologie: 1, titre: 'Médecin' },
+  { id_methodologie: 2, titre: 'Infirmier' },
+  { id_methodologie: 3, titre: 'Pharmacien' },
 ];
 
 describe('ProfilPro', () => {
@@ -68,15 +68,15 @@ describe('ProfilPro', () => {
   });
 
   it('availableMethodos exclut les méthodologies déjà assignées', () => {
-    component.methodos.set([{ id_pro: 1, id_methodo: 1 }]);
+    component.methodos.set([{ id_pro: 1, id_methodologie: 1 }]);
     const available = component.availableMethodos;
     expect(available.length).toBe(2);
-    expect(available.find((m: any) => m.id_methodo === 1)).toBeUndefined();
+    expect(available.find((m: any) => m.id_methodologie === 1)).toBeUndefined();
   });
 
   it('ajoute une méthodologie et recharge la liste', async () => {
-    vi.mocked(API.addNewExercer).mockResolvedValue({ exercer: { id_pro: 1, id_methodo: 2 } });
-    vi.mocked(API.getOneByPro).mockResolvedValue({ exercer: [{ id_pro: 1, id_methodo: 2 }] });
+    vi.mocked(API.addNewExercer).mockResolvedValue({ exercer: { id_pro: 1, id_methodologie: 2 } });
+    vi.mocked(API.getOneByPro).mockResolvedValue({ exercer: [{ id_pro: 1, id_methodologie: 2 }] });
 
     component.selectedMethodoId = 2;
     await component.addMethodo();
@@ -93,7 +93,7 @@ describe('ProfilPro', () => {
   });
 
   it('supprime une méthodologie et recharge la liste', async () => {
-    component.methodos.set([{ id_pro: 1, id_methodo: 1 }]);
+    component.methodos.set([{ id_pro: 1, id_methodologie: 1 }]);
     vi.mocked(API.removeExercer).mockResolvedValue({ success: true });
     vi.mocked(API.getOneByPro).mockResolvedValue({ exercer: [] });
 

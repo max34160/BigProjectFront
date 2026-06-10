@@ -53,11 +53,11 @@ export class UpdateMethodo implements OnInit {
         const result = await API.getOneByProAndMethodo(this.global.pro.id_pro,this.form.value.methodo);
         if(result.exercer){
           const update = await API.updateExercer(this.form.value.methodo,this.global.pro.id_pro);
-          const findMethodo = await API.getOnMethodo(update.exercer.id_methodo)
+          const findMethodo = await API.getOnMethodo(update.exercer.id_methodologie)
           this.global.exercer = findMethodo.methodo.titre;
         }else{
           const newExercer = await API.addNewExercer(this.form.value.methodo,this.global.pro.id_pro);
-          const findMethodo = await API.getOnMethodo(newExercer.exercer.id_methodo)
+          const findMethodo = await API.getOnMethodo(newExercer.exercer.id_methodologie)
           this.global.exercer = findMethodo.methodo.titre;
         }
 

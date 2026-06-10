@@ -90,8 +90,8 @@ export async function updateExercer(update : string , id_user : string) {
         headers: {
             'Content-Type': "application/json"
         },
-        body: JSON.stringify({ 
-            id_methodo : update
+        body: JSON.stringify({
+            id_methodologie : update
         })
     });
     const data = await reponse.json();
@@ -100,20 +100,20 @@ export async function updateExercer(update : string , id_user : string) {
 
 }
 
-export async function addNewExercer(id_pro : string , methodoId: string) {
+export async function addNewExercer(id_pro : string , id_methodologie: string) {
     const reponse = await fetch(`${apiRoot}/exercer/`, {
         method: 'POST',
+        credentials: 'include',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
             id_pro:  id_pro,
-            id_methodo: methodoId
+            id_methodologie: id_methodologie
         })
     });
-    const data = await reponse.json();
-    return data;
-
+    if (!reponse.ok) throw new Error(`Erreur serveur (${reponse.status})`);
+    return await reponse.json();
 }
 
 export async function logout() {
@@ -320,8 +320,8 @@ export async function updateUser(id: string, nom: string, prenom: string, age: s
 
 }
 
-export async function searchProsByVille(id_methodo: string, ville = '') {
-    const params = new URLSearchParams({ id_methodo });
+export async function searchProsByVille(id_methodologie: string, ville = '') {
+    const params = new URLSearchParams({ id_methodologie });
     if (ville) params.set('ville', ville);
     const reponse = await fetch(`${apiRoot}/pro/search?${params}`, {
         method: 'GET',
@@ -358,13 +358,13 @@ export async function verifyPro(identificationNationale: string) {
 
 }
 
-export async function removeExercer(id_pro: string, id_methodo: string) {
-    const reponse = await fetch(`${apiRoot}/exercer/${id_pro}/${id_methodo}`, {
+export async function removeExercer(id_pro: string, id_methodologie: string) {
+    const reponse = await fetch(`${apiRoot}/exercer/${id_pro}/${id_methodologie}`, {
         method: 'DELETE',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' }
     });
-    return await reponse.json();
+    if (!reponse.ok) throw new Error(`Erreur serveur (${reponse.status})`);
 }
 
 export async function registerPro(identificationNationale: string, id_user: number, nom_cabinet: string, adresse: string, ville: string, description: string, horaire_cabinet: string) {
