@@ -133,7 +133,6 @@ export async function authByToken() {
         }
     });
     const data = await reponse.json();
-
     return data;
 
 }
@@ -320,8 +319,8 @@ export async function updateUser(id: string, nom: string, prenom: string, age: s
 
 }
 
-export async function searchProsByVille(id_methodo: string, ville = '') {
-    const params = new URLSearchParams({ id_methodo });
+export async function searchProsByVille(id_methodologie: string, ville = '') {
+    const params = new URLSearchParams({ id_methodologie });
     if (ville) params.set('ville', ville);
     const reponse = await fetch(`${apiRoot}/pro/search?${params}`, {
         method: 'GET',
