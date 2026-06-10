@@ -22,7 +22,6 @@ $white-10: rgba(255, 255, 255, 0.1);
   box-sizing: border-box;
 }
 
-// Logo
 .logo-section {
   margin-bottom: 24px;
 }
@@ -34,7 +33,6 @@ $white-10: rgba(255, 255, 255, 0.1);
   color: $green-accent;
 }
 
-// Titre
 .page-title {
   font-size: 28px;
   font-weight: 700;
@@ -53,7 +51,22 @@ $white-10: rgba(255, 255, 255, 0.1);
   line-height: 1.5;
 }
 
-// Formulaire
+.form-error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 100, 100, 0.18);
+  border: 1px solid rgba(255, 100, 100, 0.4);
+  border-radius: 12px;
+  color: #ffb3b3;
+  font-size: 14px;
+  padding: 12px 16px;
+  width: 100%;
+  max-width: 380px;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+}
+
 .login-form {
   width: 100%;
   max-width: 380px;
@@ -66,7 +79,6 @@ $white-10: rgba(255, 255, 255, 0.1);
   width: 100%;
 }
 
-// Boutons
 .actions {
   display: flex;
   flex-direction: column;
@@ -114,7 +126,6 @@ $white-10: rgba(255, 255, 255, 0.1);
   }
 }
 
-// Angular Material overrides
 ::ng-deep {
   .login-form {
     .mat-mdc-form-field {

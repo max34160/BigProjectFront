@@ -1,24 +1,13 @@
 import { Routes } from '@angular/router';
-import { Login } from './pages/login/login';
-import { Acceuil } from './pages/acceuil/acceuil';
-import { FicheTech } from './pages/fiche-tech/fiche-tech';
-import { Profil } from './pages/profil/profil';
-import { Update } from './pages/update/update';
-import { Register } from './pages/register/register';
-import { VerifPro } from './pages/verif-pro/verif-pro';
-import { ProfilPro } from './pages/profil-pro/profil-pro';
-import { UpdateMethodo } from './pages/update-methodo/update-methodo';
 
 export const routes: Routes = [
     { path: "", redirectTo: "acceuil", pathMatch: "full" },
-    { path: "login", component: Login },
-    { path: "register", component: Register},
-    { path: "acceuil", component: Acceuil },
-    { path: "profil", component: Profil },
-    { path: "profil-pro", component: ProfilPro },
-    { path: "verif-pro", component: VerifPro },
-    { path: ":methodo", component: FicheTech },
-    { path: "update/:update", component: Update },
-    { path: "update-methodo/:exercer", component: UpdateMethodo }
+    { path: "login",        loadComponent: () => import('./pages/login/login').then(m => m.Login) },
+    { path: "register",     loadComponent: () => import('./pages/register/register').then(m => m.Register) },
+    { path: "acceuil",      loadComponent: () => import('./pages/acceuil/acceuil').then(m => m.Acceuil) },
+    { path: "profil",       loadComponent: () => import('./pages/profil/profil').then(m => m.Profil) },
+    { path: "profil-pro",   loadComponent: () => import('./pages/profil-pro/profil-pro').then(m => m.ProfilPro) },
+    { path: "verif-pro",    loadComponent: () => import('./pages/verif-pro/verif-pro').then(m => m.VerifPro) },
+    { path: "update/:update", loadComponent: () => import('./pages/update/update').then(m => m.Update) },
+    { path: ":methodo",     loadComponent: () => import('./pages/fiche-tech/fiche-tech').then(m => m.FicheTech) },
 ];
-

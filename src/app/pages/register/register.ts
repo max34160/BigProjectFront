@@ -1,43 +1,23 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatStepperModule } from '@angular/material/stepper';
-import * as API from "../../lib/api";
+import { Router, RouterLink } from '@angular/router';
 import { GlobalService } from '../../services/global';
-import { Router } from '@angular/router';
+import * as API from '../../lib/api';
 
 @Component({
-  selector: 'app-account-creation',
+  selector: 'app-register',
   standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatButtonModule,
-    MatIconModule,
-    MatStepperModule,
-  ],
+  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, RouterLink],
   templateUrl: './register.html',
-  styleUrls: ['./register.scss'],
+  styleUrl: './register.scss',
 })
 export class Register {
   form: FormGroup;
   hidePassword = true;
-
-  searchOptions = [
-    'Des informations sur la santé mentale',
-    'Un soutien psychologique',
-    'Des ressources pour proches aidants',
-    'De l\'aide pour une addiction',
-    'Des conseils sur le bien-être',
-  ];
 
   constructor(private fb: FormBuilder, private router: Router, public global: GlobalService) {
     this.form = this.fb.group({
@@ -50,20 +30,13 @@ export class Register {
   }
 
   async onSubmit(): Promise<void> {
-    if (this.form.valid) {
-      const result = await API.register(this.form.value.nom, this.form.value.prenom, this.form.value.age, this.form.value.email, this.form.value.password);
-      if (result.token) {
-        this.global.user = result.user;
-        this.global.isLogged = true;
-        this.router.navigate(['/profil']);
-
-      }
+    if (this.form.invalid) return;
+    const { nom, prenom, age, email, password } = this.form.value;
+    const result = await API.register(nom, prenom, age, email, password);
+    if (result.token) {
+      this.global.user = result.user;
+      this.global.isLogged = true;
+      this.router.navigate(['/profil']);
     }
   }
-
-  async linkLogin() {
-    this.router.navigate(['/logins']);
-  }
-
-
 }

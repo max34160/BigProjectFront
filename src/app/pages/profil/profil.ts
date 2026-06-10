@@ -9,7 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-profil',
   standalone: true,
-  imports: [MatButtonModule, MatFormFieldModule, MatInputModule, MatIconModule, RouterLink , RouterLink],
+  imports: [MatButtonModule, MatFormFieldModule, MatInputModule, MatIconModule, RouterLink],
   templateUrl: './profil.html',
   styleUrl: './profil.scss',
 })

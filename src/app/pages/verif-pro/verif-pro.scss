@@ -49,7 +49,6 @@ $white-10: rgba(255, 255, 255, 0.1);
   margin: 0 0 12px;
 }
 
-// Carte infos médecin
 .medecin-card {
   width: 100%;
   max-width: 380px;
@@ -82,7 +81,6 @@ $white-10: rgba(255, 255, 255, 0.1);
   font-weight: 600;
 }
 
-// Formulaire
 .verif-form {
   width: 100%;
   max-width: 380px;
@@ -95,7 +93,6 @@ $white-10: rgba(255, 255, 255, 0.1);
   width: 100%;
 }
 
-// Message d'erreur
 .error-message {
   color: #ff8fab;
   font-size: 13px;
@@ -103,7 +100,6 @@ $white-10: rgba(255, 255, 255, 0.1);
   text-align: center;
 }
 
-// Boutons
 .actions {
   display: flex;
   flex-direction: column;
@@ -151,7 +147,6 @@ $white-10: rgba(255, 255, 255, 0.1);
   }
 }
 
-// Angular Material overrides
 ::ng-deep {
   .verif-form {
     .mat-mdc-form-field {

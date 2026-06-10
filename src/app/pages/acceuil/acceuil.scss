@@ -23,7 +23,6 @@ $border: #e5e7eb;
   padding-bottom: 24px;
 }
 
-// Hero
 .hero {
   width: 100%;
   display: flex;
@@ -66,7 +65,6 @@ $border: #e5e7eb;
   margin: 0;
 }
 
-// Barre de recherche
 .search-bar-wrapper {
   width: 100%;
   max-width: 480px;
@@ -114,7 +112,6 @@ $border: #e5e7eb;
   }
 }
 
-// Section
 .section {
   width: 100%;
   max-width: 480px;
@@ -130,11 +127,15 @@ $border: #e5e7eb;
   text-align: center;
 }
 
-// Grille méthodologies
 .methodo-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 14px;
+
+  @media (max-width: 360px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
 }
 
 .methodo-card {
@@ -200,7 +201,6 @@ $border: #e5e7eb;
   -webkit-box-orient: vertical;
 }
 
-// État vide
 .empty-state {
   display: flex;
   flex-direction: column;

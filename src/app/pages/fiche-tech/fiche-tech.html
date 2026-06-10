@@ -1,4 +1,11 @@
-<div class="page-wrapper">
+<main class="page-wrapper">
+
+  @if (error()) {
+    <div class="empty-state" role="alert">
+      <mat-icon aria-hidden="true">wifi_off</mat-icon>
+      <p>{{ error() }}</p>
+    </div>
+  }
 
   @if (methodo()) {
     <div class="methodo-header">
@@ -69,4 +76,4 @@
     }
   </div>
 
-</div>
+</main>

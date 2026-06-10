@@ -54,13 +54,23 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Adresse</mat-label>
+        <input matInput formControlName="adresse" placeholder="ex : 12 rue de la Paix" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Ville</mat-label>
+        <input matInput formControlName="ville" placeholder="ex : Marseille" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
         <mat-label>Description</mat-label>
         <input matInput formControlName="description" />
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Horaires du cabinet</mat-label>
-        <input matInput formControlName="horaire_cabinet" />
+        <input matInput formControlName="horaire_cabinet" placeholder="ex : Lun-Ven 9h-18h" />
       </mat-form-field>
 
       <div class="actions">

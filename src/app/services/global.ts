@@ -1,5 +1,3 @@
-// global.service.ts
-import { P } from '@angular/cdk/keycodes';
 import { Injectable } from '@angular/core';
 import * as API from "../lib/api";
 import { Router } from '@angular/router';
@@ -20,6 +18,16 @@ export class GlobalService {
     this.verifToken();
   }
 
+  async logout() {
+    await API.logout();
+    this.isLogged = false;
+    this.isPro = false;
+    this.user = null;
+    this.pro = null;
+    this.exercer = null;
+    this.router.navigate(['/login']);
+  }
+
   async verifToken() {
     const verif = await API.authByToken();
     if (verif.user) {
@@ -35,7 +43,6 @@ export class GlobalService {
       }
       this.user = verif.user;
       this.isLogged = true;
-      this.router.navigate(['/profil']);
     }
   }
 }

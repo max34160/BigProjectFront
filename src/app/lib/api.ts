@@ -33,39 +33,24 @@ export async function register(nom: string, prenom: string , age : string , emai
         })
     });
     const data = await reponse.json();
-    console.log('Utilisateur enregistré:', data);
     return data;
 
 }
 
 export async function getAllMethodologie() {
-
     const reponse = await fetch(apiRoot + "/methodologie/all/", {
         method: "GET",
-        credentials: "include",
-        headers: {
-            'Content-Type': "application/json"
-        }
+        headers: { 'Content-Type': "application/json" }
     });
-    const data = await reponse.json();
-
-    return data;
-
+    return await reponse.json();
 }
 
 export async function getOnMethodo(methodoId: string) {
-
     const reponse = await fetch(apiRoot + "/methodologie/" + methodoId, {
         method: "GET",
-        credentials: "include",
-        headers: {
-            'Content-Type': "application/json"
-        }
+        headers: { 'Content-Type': "application/json" }
     });
-    const data = await reponse.json();
-
-    return data;
-
+    return await reponse.json();
 }
 
 export async function getOneByProAndMethodo(id_pro : string , methodoId: string) {
@@ -129,6 +114,13 @@ export async function addNewExercer(id_pro : number , methodoId: string) {
     const data = await reponse.json();
     return data;
 
+}
+
+export async function logout() {
+    await fetch(apiRoot + "/session", {
+        method: "DELETE",
+        credentials: "include",
+    });
 }
 
 export async function authByToken() {
@@ -251,108 +243,64 @@ export async function updatePasswordUser(update : string , id_user : string) {
 
 }
 
-export async function updateNameOffice(update : string , id_user : string) {
-
-    const reponse = await fetch(apiRoot + "/user/" + id_user, {
+export async function updateNameOffice(update: string, id_pro: string) {
+    const reponse = await fetch(apiRoot + "/pro/" + id_pro, {
         method: "PUT",
         credentials: "include",
-        headers: {
-            'Content-Type': "application/json"
-        },
-        body: JSON.stringify({ 
-            nom_cabinet : update
-        })
+        headers: { 'Content-Type': "application/json" },
+        body: JSON.stringify({ nom_cabinet: update })
     });
-    const data = await reponse.json();
-
-    return data;
-
-}
-export async function updateAddressOffice(update : string , id_user : string) {
-
-    const reponse = await fetch(apiRoot + "/user/" + id_user, {
-        method: "PUT",
-        credentials: "include",
-        headers: {
-            'Content-Type': "application/json"
-        },
-        body: JSON.stringify({ 
-            adresse : update
-        })
-    });
-    const data = await reponse.json();
-
-    return data;
-
+    return await reponse.json();
 }
 
-export async function updateCityOffice(update : string , id_user : string) {
-
-    const reponse = await fetch(apiRoot + "/user/" + id_user, {
+export async function updateAddressOffice(update: string, id_pro: string) {
+    const reponse = await fetch(apiRoot + "/pro/" + id_pro, {
         method: "PUT",
         credentials: "include",
-        headers: {
-            'Content-Type': "application/json"
-        },
-        body: JSON.stringify({ 
-            ville : update
-        })
+        headers: { 'Content-Type': "application/json" },
+        body: JSON.stringify({ adresse: update })
     });
-    const data = await reponse.json();
-
-    return data;
-
+    return await reponse.json();
 }
 
-export async function updateDescriptionOffice(update : string , id_user : string) {
-
-    const reponse = await fetch(apiRoot + "/user/" + id_user, {
+export async function updateCityOffice(update: string, id_pro: string) {
+    const reponse = await fetch(apiRoot + "/pro/" + id_pro, {
         method: "PUT",
         credentials: "include",
-        headers: {
-            'Content-Type': "application/json"
-        },
-        body: JSON.stringify({ 
-            description : update
-        })
+        headers: { 'Content-Type': "application/json" },
+        body: JSON.stringify({ ville: update })
     });
-    const data = await reponse.json();
-
-    return data;
-
+    return await reponse.json();
 }
 
-export async function updateOfficeHours(update : string , id_user : string) {
-
-    const reponse = await fetch(apiRoot + "/user/" + id_user, {
+export async function updateDescriptionOffice(update: string, id_pro: string) {
+    const reponse = await fetch(apiRoot + "/pro/" + id_pro, {
         method: "PUT",
         credentials: "include",
-        headers: {
-            'Content-Type': "application/json"
-        },
-        body: JSON.stringify({ 
-            horraire_cabinet : update
-        })
+        headers: { 'Content-Type': "application/json" },
+        body: JSON.stringify({ description: update })
     });
-    const data = await reponse.json();
+    return await reponse.json();
+}
 
-    return data;
-
+export async function updateOfficeHours(update: string, id_pro: string) {
+    const reponse = await fetch(apiRoot + "/pro/" + id_pro, {
+        method: "PUT",
+        credentials: "include",
+        headers: { 'Content-Type': "application/json" },
+        body: JSON.stringify({ horaire_cabinet: update })
+    });
+    return await reponse.json();
 }
 
 export async function isPro(id_user: number) {
-
-    const reponse = await fetch(apiRoot + "/pro/" + String(id_user), {
+    const reponse = await fetch(apiRoot + "/pro/user/" + String(id_user), {
         method: "GET",
         credentials: "include",
-        headers: {
-            'Content-Type': "application/json"
-        }
+        headers: { 'Content-Type': "application/json" }
     });
     const data = await reponse.json();
-
     return data;
-
 }
 
 
@@ -377,7 +325,6 @@ export async function searchProsByVille(id_methodo: string, ville = '') {
     if (ville) params.set('ville', ville);
     const reponse = await fetch(`${apiRoot}/pro/search?${params}`, {
         method: 'GET',
-        credentials: 'include',
         headers: { 'Content-Type': 'application/json' }
     });
     if (!reponse.ok) return [];
@@ -411,15 +358,23 @@ export async function verifyPro(identificationNationale: string) {
 
 }
 
-export async function registerPro(identificationNationale: string, id_user: number, nom_cabinet: string, description: string, horaire_cabinet: string) {
+export async function removeExercer(id_pro: string, id_methodo: string) {
+    const reponse = await fetch(`${apiRoot}/exercer/${id_pro}/${id_methodo}`, {
+        method: 'DELETE',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' }
+    });
+    return await reponse.json();
+}
 
+export async function registerPro(identificationNationale: string, id_user: number, nom_cabinet: string, adresse: string, ville: string, description: string, horaire_cabinet: string) {
     const reponse = await fetch(apiRoot + "/pro/register", {
         method: "POST",
         credentials: "include",
         headers: {
             'Content-Type': "application/json"
         },
-        body: JSON.stringify({ identificationNationale, id_user, nom_cabinet, description, horaire_cabinet })
+        body: JSON.stringify({ identificationNationale, id_user, nom_cabinet, adresse, ville, description, horaire_cabinet })
     });
 
     if (!reponse.ok) {
