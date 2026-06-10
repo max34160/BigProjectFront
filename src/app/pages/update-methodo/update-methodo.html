@@ -2,14 +2,14 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()" class="creation-form" novalidate>
   <mat-form-field>
     <mat-select  formControlName="methodo">
-      @for (food of images; track food) {
-      <mat-option [value]="food.id_methodo">{{food.titre}}</mat-option>
+      @for (food of images; track food.id_methodologie) {
+      <mat-option [value]="food.id_methodologie">{{food.titre}}</mat-option>
       }
     </mat-select>
     <mat-error *ngIf="form.get('methodo')?.hasError('required')">Un choix est requis</mat-error>
-    
+    <p>Valeur sélectionnée : {{ form.get('methodo')?.value }}</p>
 
-    <button mat-raised-button type="ngSubmit" class="btn-suivant" [disabled]="form.invalid">
+    <button mat-raised-button type="submit" class="btn-suivant" [disabled]="form.invalid">
       Confirmer
     </button>
   </mat-form-field>

@@ -6,6 +6,8 @@ import { Profil } from './pages/profil/profil';
 import { Update } from './pages/update/update';
 import { Register } from './pages/register/register';
 import { VerifPro } from './pages/verif-pro/verif-pro';
+import { ProfilPro } from './pages/profil-pro/profil-pro';
+import { UpdateMethodo } from './pages/update-methodo/update-methodo';
 
 export const routes: Routes = [
     { path: "", redirectTo: "acceuil", pathMatch: "full" },
@@ -13,8 +15,10 @@ export const routes: Routes = [
     { path: "register", component: Register},
     { path: "acceuil", component: Acceuil },
     { path: "profil", component: Profil },
+    { path: "profil-pro", component: ProfilPro },
     { path: "verif-pro", component: VerifPro },
     { path: ":methodo", component: FicheTech },
-    { path: "update/:update", component: Update }
+    { path: "update/:update", component: Update },
+    { path: "update-methodo/:exercer", component: UpdateMethodo }
 ];
 

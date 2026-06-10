@@ -25,6 +25,11 @@ export class GlobalService {
     if (verif.user) {
       const verifPro = await API.isPro(verif.user.id_user);
       if (verifPro.pro) {
+        const verifExercer = await API.getOneByPro(verifPro.pro.id_pro);
+        if(verifExercer.exercer){
+          const methodoExercer = await API.getOnMethodo(verifExercer.exercer.id_methodologie);
+          this.exercer = {titre : methodoExercer.methodo.titre , id_methodologie : methodoExercer.methodo.id_methodologie}
+        }
         this.pro = verifPro.pro;
         this.isPro = true;
       }

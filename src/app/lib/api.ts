@@ -97,16 +97,16 @@ export async function getOneByPro(id_pro : string ) {
 
 }
 
-export async function updateExercer(update : string , id_user : string) {
+export async function updateExercer(update : string , id_pro : string , id_methodologie : string) {
 
-    const reponse = await fetch(apiRoot + "/exercer/" + id_user, {
+    const reponse = await fetch(apiRoot + "/exercer/update/" + id_pro+"/"+id_methodologie, {
         method: "PUT",
         credentials: "include",
         headers: {
             'Content-Type': "application/json"
         },
         body: JSON.stringify({ 
-            id_methodo : update
+            id_methodologie : update
         })
     });
     const data = await reponse.json();
@@ -115,7 +115,7 @@ export async function updateExercer(update : string , id_user : string) {
 
 }
 
-export async function addNewExercer(id_pro : string , methodoId: string) {
+export async function addNewExercer(id_pro : number , methodoId: string) {
     const reponse = await fetch(`${apiRoot}/exercer/`, {
         method: 'POST',
         headers: {

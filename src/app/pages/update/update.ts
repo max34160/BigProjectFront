@@ -46,46 +46,55 @@ export class Update {
         const result = await API.updateFirstNameUser(this.form.value.update, this.global.user.id_user);
         if (result.user) {
           this.global.user = result.user;
+          this.router.navigate(['/profil']);
         }
       } else if (this.nameUpdate() == ":age") {
         const result = await API.updateAgeUser(Number(this.form.value.update), this.global.user.id_user);
         if (result.user) {
           this.global.user = result.user;
+          this.router.navigate(['/profil']);
         }
       } else if (this.nameUpdate() == ":email") {
         const result = await API.updateEmailUser(this.form.value.update, this.global.user.id_user);
         if (result.user) {
           this.global.user = result.user;
+          this.router.navigate(['/profil']);
         }
       } else if (this.nameUpdate() == ":password") {
         const result = await API.updatePasswordUser(this.form.value.update, this.global.user.id_user);
         if (result.user) {
           this.global.user = result.user;
+          this.router.navigate(['/profil']);
         }
       } else if (this.nameUpdate() == ":nom_cabinet") {
         const result = await API.updateNameOffice(this.form.value.update, this.global.pro.id_pro);
         if (result.pro) {
           this.global.pro = result.pro;
+          this.router.navigate(['/profil']);
         }
       } else if (this.nameUpdate() == ":adresse") {
         const result = await API.updateAddressOffice(this.form.value.update, this.global.pro.id_pro);
         if (result.pro) {
           this.global.pro = result.pro;
+          this.router.navigate(['/profil']);
         }
       } else if (this.nameUpdate() == ":ville") {
         const result = await API.updateCityOffice(this.form.value.update, this.global.pro.id_pro);
         if (result.pro) {
           this.global.pro = result.pro;
+          this.router.navigate(['/profil']);
         }
       } else if (this.nameUpdate() == ":description") {
         const result = await API.updateDescriptionOffice(this.form.value.update, this.global.pro.id_pro);
         if (result.pro) {
           this.global.pro = result.pro;
+          this.router.navigate(['/profil']);
         }
       } else if (this.nameUpdate() == ":horraire_cabinet") {
         const result = await API.updateOfficeHours(this.form.value.update, this.global.pro.id_pro);
         if (result.pro) {
           this.global.pro = result.pro;
+          this.router.navigate(['/profil']);
         }
       }
     }
