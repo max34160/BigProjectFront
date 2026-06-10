@@ -41,6 +41,8 @@ export class ProfilPro implements OnInit {
 
   methodoTitle(id_methodologie: number): string {
     const m = this.allMethodos().find((m: any) => m.id_methodologie === id_methodologie);
+  methodoTitle(id_methodologie: number): string {
+    const m = this.allMethodos().find((m: any) => m.id_methodologie === id_methodologie);
     return m?.titre ?? 'Inconnue';
   }
 
@@ -61,6 +63,7 @@ export class ProfilPro implements OnInit {
     }
   }
 
+  async removeMethodo(id_methodologie: number) {
   async removeMethodo(id_methodologie: number) {
     if (!this.global.pro?.id_pro) return;
     this.error.set('');

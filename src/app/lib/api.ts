@@ -82,9 +82,9 @@ export async function getOneByPro(id_pro : string ) {
 
 }
 
-export async function updateExercer(update : string , id_user : string) {
+export async function updateExercer(update : string , id_pro : string , id_methodologie : string) {
 
-    const reponse = await fetch(apiRoot + "/exercer/" + id_user, {
+    const reponse = await fetch(apiRoot + "/exercer/update/" + id_pro+"/"+id_methodologie, {
         method: "PUT",
         credentials: "include",
         headers: {
@@ -101,6 +101,7 @@ export async function updateExercer(update : string , id_user : string) {
 }
 
 export async function addNewExercer(id_pro : string , id_methodologie: string) {
+export async function addNewExercer(id_pro : string , id_methodologie: string) {
     const reponse = await fetch(`${apiRoot}/exercer/`, {
         method: 'POST',
         credentials: 'include',
@@ -109,6 +110,7 @@ export async function addNewExercer(id_pro : string , id_methodologie: string) {
         },
         body: JSON.stringify({
             id_pro:  id_pro,
+            id_methodologie: id_methodologie
             id_methodologie: id_methodologie
         })
     });

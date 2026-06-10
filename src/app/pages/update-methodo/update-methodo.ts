@@ -1,6 +1,6 @@
-import { Component, OnInit , inject, signal} from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { MatFormField, MatLabel, MatError } from "@angular/material/form-field";
-import { ActivatedRoute} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatSelect } from "@angular/material/select";
 import { MatOption } from "@angular/material/core";
 import * as API from "../../lib/api";
@@ -25,18 +25,17 @@ export class UpdateMethodo implements OnInit {
 
   images: any[] = [];
 
-  constructor(private fb: FormBuilder,public global: GlobalService) { 
+  constructor(private fb: FormBuilder, public global: GlobalService, private router: Router) {
     this.form = this.fb.group({
-      nom: ['', [Validators.required]],
-      prenom: ['', [Validators.required]],
-      age: ['', [Validators.required, Validators.min(1), Validators.max(120)]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
+      methodo: ['', [Validators.required]]
     });
     this.activatedRoute.params.subscribe(async (params) => {
       this.nameUpdate.set(params['exercer']);
       this.update.set({ update: this.nameUpdate().slice(1) });
 
+    });
+    this.form.get('methodo')?.valueChanges.subscribe(v => {
+      console.log('Valeur sélectionnée :', v);
     });
   }
 
@@ -61,6 +60,6 @@ export class UpdateMethodo implements OnInit {
           this.global.exercer = findMethodo.methodo.titre;
         }
 
-      }
     }
+  }
 }
