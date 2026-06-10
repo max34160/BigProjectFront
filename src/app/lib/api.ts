@@ -100,7 +100,7 @@ export async function updateExercer(update : string , id_pro : string , id_metho
 
 }
 
-export async function addNewExercer(id_pro : number , methodoId: string) {
+export async function addNewExercer(id_pro : string , id_methodologie: string) {
     const reponse = await fetch(`${apiRoot}/exercer/`, {
         method: 'POST',
         headers: {
@@ -108,7 +108,7 @@ export async function addNewExercer(id_pro : number , methodoId: string) {
         },
         body: JSON.stringify({
             id_pro:  id_pro,
-            id_methodo: methodoId
+            id_methodologie: id_methodologie
         })
     });
     const data = await reponse.json();
@@ -358,8 +358,8 @@ export async function verifyPro(identificationNationale: string) {
 
 }
 
-export async function removeExercer(id_pro: string, id_methodo: string) {
-    const reponse = await fetch(`${apiRoot}/exercer/${id_pro}/${id_methodo}`, {
+export async function removeExercer(id_pro: string, id_methodologie: string) {
+    const reponse = await fetch(`${apiRoot}/exercer/${id_pro}/${id_methodologie}`, {
         method: 'DELETE',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' }

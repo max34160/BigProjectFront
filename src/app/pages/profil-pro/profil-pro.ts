@@ -40,14 +40,14 @@ export class ProfilPro implements OnInit {
     this.methodos.set(result.exercer ?? []);
   }
 
-  methodoTitle(id_methodo: number): string {
-    const m = this.allMethodos().find((m: any) => m.id_methodo === id_methodo);
+  methodoTitle(id_methodologie: number): string {
+    const m = this.allMethodos().find((m: any) => m.id_methodologie === id_methodologie);
     return m?.titre ?? 'Inconnue';
   }
 
   get availableMethodos(): any[] {
-    const assigned = new Set(this.methodos().map((e: any) => e.id_methodo));
-    return this.allMethodos().filter((m: any) => !assigned.has(m.id_methodo));
+    const assigned = new Set(this.methodos().map((e: any) => e.id_methodologie));
+    return this.allMethodos().filter((m: any) => !assigned.has(m.id_methodologie));
   }
 
   async addMethodo() {
@@ -62,11 +62,11 @@ export class ProfilPro implements OnInit {
     }
   }
 
-  async removeMethodo(id_methodo: number) {
+  async removeMethodo(id_methodologie: number) {
     if (!this.global.pro?.id_pro) return;
     this.error.set('');
     try {
-      await API.removeExercer(String(this.global.pro.id_pro), String(id_methodo));
+      await API.removeExercer(String(this.global.pro.id_pro), String(id_methodologie));
       await this.loadMethodos();
     } catch {
       this.error.set('Impossible de supprimer la méthodologie. Veuillez réessayer.');
