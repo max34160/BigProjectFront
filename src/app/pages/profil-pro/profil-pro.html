@@ -153,16 +153,13 @@
       </div>
     }
 
-    @for (m of methodos(); track m.id_methodologie; let last = $last) {
+   
     @for (m of methodos(); track m.id_methodologie; let last = $last) {
       <div class="info-row">
         <div class="info-content">
           <span class="info-value">{{ methodoTitle(m.id_methodologie) }}</span>
-          <span class="info-value">{{ methodoTitle(m.id_methodologie) }}</span>
         </div>
         <button mat-icon-button class="edit-btn delete-btn"
-                [attr.aria-label]="'Supprimer ' + methodoTitle(m.id_methodologie)"
-                (click)="removeMethodo(m.id_methodologie)">
                 [attr.aria-label]="'Supprimer ' + methodoTitle(m.id_methodologie)"
                 (click)="removeMethodo(m.id_methodologie)">
           <mat-icon aria-hidden="true">close</mat-icon>

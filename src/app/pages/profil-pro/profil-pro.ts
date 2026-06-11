@@ -27,6 +27,7 @@ export class ProfilPro implements OnInit {
     try {
       const [all] = await Promise.all([API.getAllMethodologie(), this.global.ready]);
       this.allMethodos.set(all);
+      console.log(this.allMethodos)
       await this.loadMethodos();
     } catch {
       this.error.set('Impossible de charger les données. Veuillez réessayer plus tard.');
@@ -39,8 +40,7 @@ export class ProfilPro implements OnInit {
     this.methodos.set(result.exercer ?? []);
   }
 
-  methodoTitle(id_methodologie: number): string {
-    const m = this.allMethodos().find((m: any) => m.id_methodologie === id_methodologie);
+
   methodoTitle(id_methodologie: number): string {
     const m = this.allMethodos().find((m: any) => m.id_methodologie === id_methodologie);
     return m?.titre ?? 'Inconnue';
@@ -59,11 +59,11 @@ export class ProfilPro implements OnInit {
       this.selectedMethodoId = null;
       await this.loadMethodos();
     } catch {
-      this.error.set('Impossible d\'ajouter la méthodologie. Veuillez réessayer.');
+      this.error.set('Impossible d\'ajouter la méthodologie. Veuillez réessayer ou vérifier que vous en avez pas déja une.');
     }
   }
 
-  async removeMethodo(id_methodologie: number) {
+ 
   async removeMethodo(id_methodologie: number) {
     if (!this.global.pro?.id_pro) return;
     this.error.set('');
@@ -73,7 +73,7 @@ export class ProfilPro implements OnInit {
       this.error.set('Impossible de supprimer la méthodologie. Veuillez réessayer.');
       return;
     }
-    // Mise à jour immédiate de la liste sans attendre le rechargement
+    
     this.methodos.set(this.methodos().filter((m: any) => m.id_methodologie !== id_methodologie));
     try {
       await this.loadMethodos();

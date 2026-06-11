@@ -100,7 +100,7 @@ export async function updateExercer(update : string , id_pro : string , id_metho
 
 }
 
-export async function addNewExercer(id_pro : string , id_methodologie: string) {
+
 export async function addNewExercer(id_pro : string , id_methodologie: string) {
     const reponse = await fetch(`${apiRoot}/exercer/`, {
         method: 'POST',
@@ -110,7 +110,6 @@ export async function addNewExercer(id_pro : string , id_methodologie: string) {
         },
         body: JSON.stringify({
             id_pro:  id_pro,
-            id_methodologie: id_methodologie
             id_methodologie: id_methodologie
         })
     });
